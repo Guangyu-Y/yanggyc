@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Guangyu Yang">
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/yanggyc/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/yanggyc/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/yanggyc/js/script.js"></script>
+    
+    <script src="/yanggyc/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/yanggyc/">Yanggyc&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/yanggyc/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title"></h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Guangyu Yang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;19:16:00</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="Sysbench对数据库的基准测试与脚本分析"><a href="#Sysbench对数据库的基准测试与脚本分析" class="headerlink" title="Sysbench对数据库的基准测试与脚本分析"></a>Sysbench对数据库的基准测试与脚本分析</h2><h3 id="1-Sysbench简介"><a href="#1-Sysbench简介" class="headerlink" title="1.Sysbench简介"></a>1.Sysbench简介</h3><p>sysbench是一款可编写脚本的多线程基准测试工具。对于数据库的OLTP测试，Sysbench1.0官方提供部分简单脚本，也可以根据自己的需求编写脚本。Sysbench1.0可以灵活的编写脚本。因此，在数据库的性能测试中，其不仅可以做简单场景的基准测试，也可以自己定义部分的业务场景。但是相对于LoadRunner，其不容易模拟用户的真实操作场景。<br>​        </p>
+<blockquote>
+<p>基准测试：性能基准测试是一项系统性能测量工作。基准测试在项目中与一般性能测试工作的主要区别在于其更短的回归周期与直观的趋势分析，并同时为混合业务性能场景的脚本线程配比计算提供依据。一般的性能测试往往只在版本计划中或遭遇系统性能问题时进行，而基准测试在日常中进行，特别是在发生重大变更事件（例如：系统配置、环境发生变更）之前与之后的测试，让测试结果数据与一般的性能测试结果数据更有实质上的参考意义。因为，当为系统创建性能基准后，基准数据作为性能指标的参照物，可用于判断任意一项变更为系统带来的具体影响。例如：某项配置优化后能够为系统带来的性能提升是多少、系统某项操作历史数据的增长与性能响应的关系、系统环境的变更对系统性能产生的影响。而且实施该项工作并不复杂。</p>
+</blockquote>
+<h3 id="2-Sysbench的源码安装"><a href="#2-Sysbench的源码安装" class="headerlink" title="2.Sysbench的源码安装"></a>2.Sysbench的源码安装</h3><p>在<a target="_blank" rel="noopener" href="https://github.com/akopytov/sysbench">Github</a>上下载源码包，按照如下配置进行构建安装。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./autogen.sh</span><br><span class="line"># Add --with-pgsql to build with PostgreSQL support 使用pgsql构建Sysbench</span><br><span class="line"># 默认使用MySQL进行构建Sysbench。如果MySQL安装在非标准位置，使用--with-mysql-includes和--with-mysql-libs指定MySQL的头文件和库。</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line">make -j</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在安装的过程中，需要系统的glibc库的版本高于2.14，</li>
+</ul>
+<h3 id="3-Sysbench命令的使用"><a href="#3-Sysbench命令的使用" class="headerlink" title="3.Sysbench命令的使用"></a>3.Sysbench命令的使用</h3><p>在Sysbench安装完成后，默认的安装路径是/usr/local/sysbench/sysbench,为了方便起见可以将bin目录下的Sysbench文件cp到/bin目录下。<br>具体的官方脚本存放路径在安装目录下的share/sysbench文件夹下，具体sysbench命令的用法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line">    syebench [options] ... [testname] [command]</span><br></pre></td></tr></table></figure>
+<h4 id="3-1-options选项"><a href="#3-1-options选项" class="headerlink" title="3.1 options选项"></a>3.1 options选项</h4><ul>
+<li><p>一般选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">--threads=N                     要使用的线程数。默认:1.</span><br><span class="line">--events=N                      限制的事件总数。默认:0.</span><br><span class="line">--time=N                        限制总的执行时间(单位：S)。 默认:10.</span><br><span class="line">--force-shutdown=STRING         在执行--time秒后等待的秒数，到时强制关闭。默认:off.(不关闭)</span><br><span class="line">--thread-stack-size=SIZE        每个线程的堆栈大小。默认:64K.</span><br><span class="line">--rate=N                        平均的交易速率。默认:0.(无限制)</span><br><span class="line">--report-interval=N             以秒为单位定期报告中间统计数据。0表示禁用中间报告.</span><br><span class="line">--report-cheakpoints=[List,...] 转储完整的统计信息，并在指定的时间点重置所有计数器。参数是一个逗号分隔的值列表，表示必须执行报告检查点时，从测试开始到执行报告检查点的时间(以秒为单位)。默认情况下，报告检查点是关闭的。</span><br><span class="line">--dubug[on|off]                 打印更多的调试信息</span><br><span class="line">--validate[=on|off]             在可能的情况下执行验证检查。默认:off</span><br><span class="line">--help                          打印帮助信息并退出</span><br><span class="line">--version                       打印版本信息并退出</span><br><span class="line">--config-file=FILENAME          包含命令行选项的文件</span><br><span class="line">--tx-rate=N                     已弃用的别名，--rate</span><br><span class="line">--max-requests=N                已弃用的别名，--events</span><br><span class="line">--max-time=N                    已弃用的别名，--time</span><br><span class="line">--num-threads=N                 已弃用的别名，--threads</span><br><span class="line">--tables=N                      测试中使用的表的数量。默认:1.</span><br><span class="line">--table-size=N                  每个表的数据量.</span><br><span class="line">--warmup_time=N                 预热时间，预防冷数据对测试结果的影响.</span><br></pre></td></tr></table></figure></li>
+<li><p>伪随机数生成器的选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--rand-type=STRING              随机数分布。&#123;uniform,gaussian,special,pareto&#125;</span><br><span class="line">--rand-spec-iter=N              用于生成数字的迭代次数。默认:12.</span><br><span class="line">--rand-spec-pct=N               被视为特殊值得百分比(对于特殊分配).默认:1.</span><br><span class="line">--rand-spec-res=N               使用特殊值得百分比(对于特殊分布)。默认:75.</span><br><span class="line">--rand-seed=N                   随机数生成器的种子。当0时，当前时间用做随机数生成器的种子。</span><br><span class="line">--rand-pareto-h=N               pareto分布的参数h。默认:0.2</span><br></pre></td></tr></table></figure></li>
+<li><p>日志选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--verbosity=N                   日志等级。&#123;5 - debug,0 - error&#125;,默认:3.</span><br><span class="line">--percentile=N                  在延迟统计中计算的百分比 (1-100).使用0来禁用百分位数计算.</span><br><span class="line">--histogrm[=on|off]             在报告中打印延迟直方图</span><br></pre></td></tr></table></figure></li>
+<li><p>一般数据库选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--db-driver=STRING              指定要使用的数据库驱动名称,(help选项来获取可用的驱动程序列表)。默认:mysql.</span><br><span class="line">--db-ps-mode=STRING             预编译语句的使用模式&#123;auto,disable&#125;。默认:auto.</span><br><span class="line">--db-debug[=on|off]             打印数据库特定的调试日志。默认:off.</span><br></pre></td></tr></table></figure></li>
+<li><p>mysql选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">--mysql-host=[LIST,...]             mysql服务器地址。默认:localhost.</span><br><span class="line">--mysql-port=[LIST,...]             mysql服务器端口。默认:3306.</span><br><span class="line">--mysql-socket=[LIST,...]           mysql socket.</span><br><span class="line">--mysql-user=STRING                 mysql用户.默认:[sbtest].</span><br><span class="line">--mysql-password=STRING             mysql用户密码。默认:[].</span><br><span class="line">--mysql-db=STRING                   mysql数据库名.默认:[sbtest].</span><br><span class="line">--mysql-ssl[=on|off]                客户端允许的情况下，使用SSL连接。默认:[off].</span><br><span class="line">--mysql-ssl-cipher=STRING           为SSL连接使用特定的密码。</span><br><span class="line">--mysql-compression[=on|off]        客户端允许的情况下，使用压缩。默认:[off].</span><br><span class="line">--mysql-debug[=on|off]              跟踪所有客户端库调用。默认:[off].</span><br><span class="line">--mysql-ignore-errors=[LIST,...]    要忽略的错误列表，或&quot;all&quot;[1213,1020,1205]</span><br><span class="line">--mysql-dry-run[=on|off]            Dry run,假设所有MySQL客户机API调用在不执行的情况下都是成功的。</span><br></pre></td></tr></table></figure></li>
+<li><p>官方脚本选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">--table_size                        Number of rows per table[1000]</span><br><span class="line">--range_size                        Range size for range SELECT queries[100]</span><br><span class="line">--tables                            Number of tables</span><br><span class="line">--point_selects                     Number of point SELECT queries per transaction[10]</span><br><span class="line">--simple_ranges                     Number of simple range SELECT queries per transaction[1]</span><br><span class="line">--sum_ranges                        Number of SELECT SUM() queries per transaction[1]</span><br><span class="line">--order_ranges                      Number of SELECT ORDER BY queries per transaction[1]</span><br><span class="line">--distinct_ranges                   Number of SELECT DISTINCT queries per transaction[1]</span><br><span class="line">--index_updates                     Number of UPDATE index queries per transaction[1]</span><br><span class="line">--non_index_updates                 Number of UPDATE non-index queries per transaction[1]</span><br><span class="line">--delete_inserts                    Number of DELETE/INSERT combinations per transaction[1]</span><br><span class="line">--range_selects                     Enable/disable all range SELECT queries</span><br><span class="line">--auto_inc                          Use AUTO_INCREMENT column as Primary Key (for MySQL), or its alternatives in other DBMS. When disabled, use client-generated IDs.[true]</span><br><span class="line">--create_table_options              Extra CREATE TABLE options[]</span><br><span class="line">--skip_trx                          Don&#x27;t start explicit transactions and execute all queries in the AUTOCOMMIT mode[false]</span><br><span class="line">--secondary                         Use a secondary index in place of the PRIMARY KEY[false]</span><br><span class="line">--create_secondary                  Create a secondary index in addition to the PRIMARY KEY[true]</span><br><span class="line">--reconnect                         Reconnect after every N events. The default (0) is to not reconnect</span><br><span class="line">--mysql_storage_engine              Storage engine, if MySQL is used.[innodb]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="3-2-testname的使用"><a href="#3-2-testname的使用" class="headerlink" title="3.2 testname的使用"></a>3.2 testname的使用</h4><p>sysbench安装目录下的share/sysbench/，就是sysbench的默认脚本路径，其中的lua脚本名即可作为testname。例如:sysbench  oltp_insert prepare. 其中oltp_insert就是指定在../share/sysbench/路径下的oltp_insert.lua脚本。testname也可以使用指定路径的lua脚本，如:sysbench  /usr/local/sysbench/share/sysbench/oltp_insert prepare.</p>
+</li>
+</ul>
+<h4 id="3-3-command选项"><a href="#3-3-command选项" class="headerlink" title="3.3 command选项"></a>3.3 command选项</h4><ul>
+<li>prepare:执行该测试的准备工作，如建表、插入数据。可在脚本中自定义。</li>
+<li>run:执行具体的测试内容。</li>
+<li>cleanup：对完成的测试进行数据清理。</li>
+<li>help：获取相应的帮助信息。</li>
+</ul>
+<blockquote>
+<p>其中每个环节的内的详细分析见下文</p>
+</blockquote>
+<h3 id="4-官方脚本分析与脚本的自定义"><a href="#4-官方脚本分析与脚本的自定义" class="headerlink" title="4.官方脚本分析与脚本的自定义"></a>4.官方脚本分析与脚本的自定义</h3><p>官方提供的OLTP测试脚本中，oltp_common.lua是为其他脚本所调用的公共脚本。在自定义脚本的过程中，需要以每个线程为单位，实现commands为prepare，run，cleanup时的执行函数。</p>
+<ul>
+<li>prepare过程</li>
+</ul>
+<p>在prepare时，需要为测试的案例进行建表、造数等准备工作。在官方的脚本中，oltp_common.lua脚本中定义了prepare执行的函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 实现并行的准备和预热命令</span><br><span class="line">sysbench.cmdline.commands = &#123;</span><br><span class="line">    prepare = &#123;cmd_prepare,sysbench.cmdline.PARALLEL_COMMAND&#125;,</span><br><span class="line">    prewarm = &#123;cmd_prewarm,sysbench.cmdline.PARALLEL_COMMAND&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体的prepare操作在函数cmd_prepare()函数中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function cmd_prepare()</span><br><span class="line">    local drv = sysbench.sql.driver()</span><br><span class="line">    local con = drv:connect()</span><br><span class="line">    </span><br><span class="line">    for i = sysbench.tid % sysbench.opt.threads + 1, sysbench.opt.tables,sysbench.opt.threads do</span><br><span class="line">        create_table(drv,con,i)         --创建表的函数</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>如果要自定义prepare操作，可以直接在自定义的脚本中自定义sysbench.cmdline.commands.prepare，实例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">sysbench.cmdline.commands.prepare = &#123;</span><br><span class="line">    function()</span><br><span class="line">        thread_init()</span><br><span class="line">        prepareTeller()</span><br><span class="line">    end</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function thread_init()</span><br><span class="line">--初始化当前的驱动与连接</span><br><span class="line">    drv = sysbench.sql.driver()</span><br><span class="line">    con = drv:connect()</span><br><span class="line">end</span><br><span class="line">function prepareTeller()</span><br><span class="line">--创建表以及插入数据</span><br><span class="line">    local i</span><br><span class="line">    con:query(string.format(&quot;drop table id exists a_teller&quot;))</span><br><span class="line">    con:query(string.format(&quot;create table a_teller(&quot;..</span><br><span class="line">        &quot;tellerNo varchar(20) not null,&quot;..</span><br><span class="line">        &quot;tellerName varchar(20) not null,&quot;..</span><br><span class="line">        &quot;primary key(tellerNo)&quot;..</span><br><span class="line">        &quot;)&quot;))</span><br><span class="line">    for i = 1 , sysbench.opt.table_size do</span><br><span class="line">        con:query(string.format(&quot;insert into a_teller(telerNo,tellerName) values(%s,&#x27;tellerName&#x27;)&quot;,i))</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<ul>
+<li>run过程   </li>
+</ul>
+<p>正式的测试过程包含在run指令里面的操作，run指令对应脚本中的event()函数，其中用到的连接con是从thread_init()函数中进行初始化的全局变量。然后可以在event()函数中进行相应的测试操作。其中可以调用oltp_common.lua文件中的SQL语句、相关的函数，前提是在自定义脚本中引入oltp_common，require(“oltp_common”)。在操作执行完成后，对stmt、con进行close(),也可以直接使用common中的thread_done()函数进行关闭。</p>
+<ul>
+<li>cleanup过程</li>
+</ul>
+<p>在自定义的脚本中，通过实现cleanup()函数进行最后的清理工作，如删除表等。</p>
+<h3 id="5-sysbench官方案例分析"><a href="#5-sysbench官方案例分析" class="headerlink" title="5. sysbench官方案例分析"></a>5. sysbench官方案例分析</h3><h4 id="5-1-Bulk-insert-benchmark-批量插入基准测试"><a href="#5-1-Bulk-insert-benchmark-批量插入基准测试" class="headerlink" title="5.1 Bulk insert benchmark(批量插入基准测试)"></a>5.1 Bulk insert benchmark(批量插入基准测试)</h4><blockquote>
+<p>批量插入：多线程并发的做多行插入，每个线程插入到自己的表中。线程数和表数由–threads参数决定。插入的数据量由参数–time或–events参数决定。</p>
+</blockquote>
+<ul>
+<li>脚本：bulk_insert.lua</li>
+<li>执行过程：<ul>
+<li>prepare:执行建表语句，建表的数量由线程数决定。create table if not exists </li>
+<li>run:执行SQL insert into sbtest[i] values(),(),…。每条记录预计插入记录数39033条。(*)</li>
+<li>cleanup: drop 表。</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-2-Delete-Only-OLTP-benchmark-仅删除OLTP基准"><a href="#5-2-Delete-Only-OLTP-benchmark-仅删除OLTP基准" class="headerlink" title="5.2 Delete-Only OLTP benchmark(仅删除OLTP基准)"></a>5.2 Delete-Only OLTP benchmark(仅删除OLTP基准)</h4><blockquote>
+<p>OLTP基准测试：仅删除测试。</p>
+</blockquote>
+<ul>
+<li>脚本：oltp_delete.lua</li>
+<li>执行过程：<ul>
+<li>prepare: 创建表，插入记录，创建索引(create table;insert records;create secondary index;)。</li>
+<li>run:执行单条删除(delete from where)。</li>
+<li>cleanup: drop表。</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-3-Insert-Only-OLTP-benchmark-仅插入基准测试"><a href="#5-3-Insert-Only-OLTP-benchmark-仅插入基准测试" class="headerlink" title="5.3 Insert-Only OLTP benchmark(仅插入基准测试)"></a>5.3 Insert-Only OLTP benchmark(仅插入基准测试)</h4><blockquote>
+<p>OLTP基准测试：单条插入。（自动提交）<br>[可以自行分配自增键与非自增键的使用]</p>
+</blockquote>
+<ul>
+<li>脚本：oltp_insert.lua</li>
+<li>执行过程：<ul>
+<li>prepare：创建表，创建索引。</li>
+<li>run：插入单条SQL。</li>
+<li>cleanup：drop表。</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-4-OLTP-Point-Select-benchmark-OLTP单条记录基准测试"><a href="#5-4-OLTP-Point-Select-benchmark-OLTP单条记录基准测试" class="headerlink" title="5.4 OLTP Point Select benchmark(OLTP单条记录基准测试)"></a>5.4 OLTP Point Select benchmark(OLTP单条记录基准测试)</h4><blockquote>
+<p>OLTP基准测试：单条记录查询    </p>
+</blockquote>
+<ul>
+<li>脚本：oltp_point_selete.lua</li>
+<li>执行过程：<ul>
+<li>prepare：创建表，插入数据</li>
+<li>run：在0-table_size之间随机主键，根据主键进行查询。(select c from sbtest1 where id =?)</li>
+<li>cleanup: drop表</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-5-Read-Only-OLTP-benchmark-只读基准测试"><a href="#5-5-Read-Only-OLTP-benchmark-只读基准测试" class="headerlink" title="5.5 Read-Only OLTP benchmark(只读基准测试)"></a>5.5 Read-Only OLTP benchmark(只读基准测试)</h4><blockquote>
+<p>测试数据库的各类读。<br>通过事务选项：skip_trx=[true|false]来选择是否跳过事务(默认false，不跳过事务)。<br>通过是否进行范围查询：range_selects=[true|false]，来选择是否进行范围查询。</p>
+</blockquote>
+<ul>
+<li>脚本：oltp_read_only.lua</li>
+<li>执行过程：<ul>
+<li>prepare:  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-- 脚本主要内容</span><br><span class="line">prepare_point_selects()</span><br><span class="line"></span><br><span class="line">if not sysbench.opt.skip_trx then</span><br><span class="line">-- 事务准备</span><br><span class="line">    prepare_begin()</span><br><span class="line">    prepare_commit()</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">if sysbench.opt.range_selects then</span><br><span class="line">-- stmts准备</span><br><span class="line">    prepare_simple_ranges()</span><br><span class="line">    prepare_sum_ranges()</span><br><span class="line">    prepare_order_ranges()</span><br><span class="line">    prepare_distinct_ranges()</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>run:   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-- 脚本主要内容</span><br><span class="line">execute_point_selects()</span><br><span class="line">-- 执行SQL：SELECT c FROM sbtest%u WHERE id=?</span><br><span class="line">execute_simple_ranges()</span><br><span class="line">    -- 执行SQL：SELECT c FROM sbtest%u WHERE id BETWEEN ? AND ?</span><br><span class="line">execute_sum_ranges()</span><br><span class="line">-- 执行SQL：SELECT SUM(k) FROM sbtest%u WHERE id BETWEEN ? AND ?</span><br><span class="line">execute_order_ranges()</span><br><span class="line">-- 执行SQL：SELECT c FROM sbtest%u WHERE id BETWEEN ? AND ? ORDER BY c</span><br><span class="line">execute_distinct_ranges()</span><br><span class="line">-- 执行SQL：SELECT DISTINCT c FROM sbtest%u WHERE id BETWEEN ? AND ? ORDER BY c</span><br></pre></td></tr></table></figure></li>
+<li>cleanup: drop表</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-6-Read-Write-OLTP-benchmark-读写基准测试"><a href="#5-6-Read-Write-OLTP-benchmark-读写基准测试" class="headerlink" title="5.6 Read/Write OLTP benchmark(读写基准测试)"></a>5.6 Read/Write OLTP benchmark(读写基准测试)</h4><blockquote>
+<p>Read/Write 在Read-Only的基础上多加入了带索引更新、不带索引更新以及删除插入，以此来基准测试数据库的读写。<br>事务选项：skip_trx=[true|false]<br>范围查询：range_selects=[true|false]</p>
+</blockquote>
+<ul>
+<li>脚本：oltp_read_write.lua</li>
+<li>执行过程：<ul>
+<li>prepare:  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 脚本主要内容</span><br><span class="line">-- 在Read-Only的基础上，加入以下操作，进行stmt的参数准备。</span><br><span class="line">prepare_index_updates()</span><br><span class="line">prepare_non_index_updates()</span><br><span class="line">prepare_delete_inserts()</span><br></pre></td></tr></table></figure></li>
+<li>run:  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 脚本主要内容</span><br><span class="line">-- 在Read-Only的基础上，添加如下操作</span><br><span class="line">execute_index_updates()</span><br><span class="line">-- 执行SQL：UPDATE sbtest%u SET k=k+1 WHERE id=?</span><br><span class="line">execute_non_index_updates()</span><br><span class="line">-- 执行SQL：UPDATE sbtest%u SET c=? WHERE id=?</span><br><span class="line">execute_delete_inserts()</span><br><span class="line">-- 执行SQL：DELETE FROM sbtest%u WHERE id=?</span><br><span class="line">-- 执行SQL：INSERT INTO sbtest%u (id, k, c, pad) VALUES (?, ?, ?, ?)</span><br></pre></td></tr></table></figure></li>
+<li>cleanup:drop表</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-7-Update-Index-OLTP-benchmark-更新索引的OLTP基准测试"><a href="#5-7-Update-Index-OLTP-benchmark-更新索引的OLTP基准测试" class="headerlink" title="5.7 Update-Index OLTP benchmark(更新索引的OLTP基准测试)"></a>5.7 Update-Index OLTP benchmark(更新索引的OLTP基准测试)</h4><blockquote>
+<p>更新索引键。</p>
+</blockquote>
+<ul>
+<li>脚本：oltp_update_index.lua</li>
+<li>执行过程：<ul>
+<li>prepare: prepare_index_update():准备更新语句，以及参数。</li>
+<li>run:  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 脚本主要内容</span><br><span class="line">execute_index_updates(con)</span><br><span class="line">-- 执行SQL：UPDATE sbtest%u SET k=k+1 WHERE id=?</span><br><span class="line">check_reconnect() </span><br><span class="line">--新版本中加入，用于执行完更新后重新连接数据源</span><br></pre></td></tr></table></figure></li>
+<li>cleanup:drop 表</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-8-Update-Non-Index-OLTP-benchmark-更新非索引键的OLTP基准测试"><a href="#5-8-Update-Non-Index-OLTP-benchmark-更新非索引键的OLTP基准测试" class="headerlink" title="5.8 Update-Non-Index OLTP benchmark(更新非索引键的OLTP基准测试)"></a>5.8 Update-Non-Index OLTP benchmark(更新非索引键的OLTP基准测试)</h4><blockquote>
+<p>更新非索引键。</p>
+</blockquote>
+<ul>
+<li>脚本：</li>
+<li>执行过程：<ul>
+<li>prepare:prepare_non_index_updates():准备更新语句，以及参数。</li>
+<li>run:  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 脚本主要内容</span><br><span class="line">execute_non_index_updates()</span><br><span class="line">-- 执行SQL：UPDATE sbtest%u SET c=? WHERE id=?</span><br><span class="line">check_reconnect() </span><br><span class="line">--新版本中加入，用于执行完更新后重新连接数据源</span><br></pre></td></tr></table></figure></li>
+<li>cleanup:drop表</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-9-Write-Only-OLTP-benchmark-只写OLTP基准测试"><a href="#5-9-Write-Only-OLTP-benchmark-只写OLTP基准测试" class="headerlink" title="5.9 Write-Only OLTP benchmark(只写OLTP基准测试)"></a>5.9 Write-Only OLTP benchmark(只写OLTP基准测试)</h4><blockquote>
+<p>是读写基准测试的一部分，与只读组成读写OLTP基准测试。<br>事务选项：skip_trx=[true|false]</p>
+</blockquote>
+<ul>
+<li>脚本：oltp_write_only.lua</li>
+<li>执行过程：<ul>
+<li>prepare:  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 脚本主要内容</span><br><span class="line">if not sysbench.opt.skip_trx then</span><br><span class="line">-- 事务准备</span><br><span class="line">    prepare_begin()</span><br><span class="line">    prepare_commit()</span><br><span class="line">end</span><br><span class="line">-- 准备stmts语句，并设置参数</span><br><span class="line">prepare_index_updates()</span><br><span class="line">prepare_non_index_updates()</span><br><span class="line">prepare_delete_inserts()</span><br></pre></td></tr></table></figure></li>
+<li>run:    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-- 脚本主要内容</span><br><span class="line">if not sysbench.opt.skip_trx then</span><br><span class="line">    begin()</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"> execute_index_updates()</span><br><span class="line">-- 执行SQL：UPDATE sbtest%u SET k=k+1 WHERE id=?</span><br><span class="line">execute_non_index_updates()</span><br><span class="line">-- 执行SQL：UPDATE sbtest%u SET c=? WHERE id=?</span><br><span class="line">execute_delete_inserts()</span><br><span class="line">-- 执行SQL：DELETE FROM sbtest%u WHERE id=?</span><br><span class="line">-- 执行SQL：INSERT INTO sbtest%u (id, k, c, pad) VALUES (?, ?, ?, ?)</span><br><span class="line"></span><br><span class="line">if not sysbench.opt.skip_trx then</span><br><span class="line">    commit()</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">check_reconnect()</span><br></pre></td></tr></table></figure></li>
+<li>cleanup:drop表。</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-10-select-random-points-test-MariaDB’s-key-cache-segments"><a href="#5-10-select-random-points-test-MariaDB’s-key-cache-segments" class="headerlink" title="5.10 select_random_points(test MariaDB’s key_cache_segments)"></a>5.10 select_random_points(test MariaDB’s key_cache_segments)</h4><blockquote>
+<p>多并发查询单条记录。为保证查询不重叠，首先将表按照线程数分段，然后将各个数据段分配到具体线程，各个线程在相应的段进行查询。</p>
+</blockquote>
+<ul>
+<li>脚本：select_random_points.lua</li>
+<li>执行过程：<ul>
+<li>prepare:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- 不支持多表，--tables选项为默认值或设置为1。</span><br><span class="line">function prepare()</span><br><span class="line">    assert(sysbench.opt.tables == 1, &quot;this benchmark does not support &quot; ..</span><br><span class="line">     &quot;--tables &gt; 1&quot;)</span><br><span class="line">    oltp_prepare() --common中的prepare，建表。</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>run:<ul>
+<li>thread_init()<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">-- 在run之前，每个线程的初始化工作。</span><br><span class="line">function thread_init()</span><br><span class="line">    drv = sysbench.sql.driver()</span><br><span class="line">    con = drv:connect()</span><br><span class="line">    </span><br><span class="line">    local points = string.rep(&quot;?, &quot;, sysbench.opt.random_points - 1) .. &quot;?&quot;</span><br><span class="line"></span><br><span class="line">    -- 创建语句，并初始化参数位</span><br><span class="line">    stmt = con:prepare(string.format([[</span><br><span class="line">        SELECT id, k, c, pad</span><br><span class="line">        FROM sbtest1</span><br><span class="line">        WHERE k IN (%s)</span><br><span class="line">        ]], points))</span><br><span class="line"></span><br><span class="line">    params = &#123;&#125;</span><br><span class="line">    for j = 1, sysbench.opt.random_points do</span><br><span class="line">        params[j] = stmt:bind_create(sysbench.sql.type.INT)</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    stmt:bind_param(unpack(params))</span><br><span class="line"></span><br><span class="line">    -- sysbench.opt.threads：线程个数</span><br><span class="line">    -- sysbench.opt.table_size：表的行数</span><br><span class="line">    rlen = sysbench.opt.table_size / sysbench.opt.threads</span><br><span class="line"></span><br><span class="line">    -- sysbench.tid：当前线程ID</span><br><span class="line">    -- sysbench.opt.threads：线程个数，--threads指定</span><br><span class="line">    thread_id = sysbench.tid % sysbench.opt.threads</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>event()<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function event()</span><br><span class="line">    -- 为了防止范围查询的重叠，我们需要将整个表划分为&#x27;--threads&#x27;段，然后让每个线程使用自己的段</span><br><span class="line">    -- 其中rlen见thread_init()</span><br><span class="line">    for i = 1, sysbench.opt.random_points do</span><br><span class="line">        local rmin = rlen * thread_id</span><br><span class="line">        local rmax = rmin + rlen</span><br><span class="line">        -- 随机生成设置每个查询的参数</span><br><span class="line">        params[i]:set(sysbench.rand.default(rmin, rmax))</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    stmt:execute()</span><br><span class="line"></span><br><span class="line">    check_reconnect()</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>cleanup:drop表。</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-11-select-random-ranges-test-MariaDB’s-key-cache-segments"><a href="#5-11-select-random-ranges-test-MariaDB’s-key-cache-segments" class="headerlink" title="5.11 select_random_ranges(test MariaDB’s key_cache_segments)"></a>5.11 select_random_ranges(test MariaDB’s key_cache_segments)</h4><blockquote>
+<p>多并发查询多条记录，语句select count(k) from sbtest1 where between … and … or between … and … ···。</p>
+</blockquote>
+<ul>
+<li>脚本：select_random_ranges.lua</li>
+<li>执行过程：<ul>
+<li>prepare:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- 不支持多表，--tables选项为默认值或设置为1。</span><br><span class="line">function prepare()</span><br><span class="line">    assert(sysbench.opt.tables == 1, &quot;this benchmark does not support &quot; ..</span><br><span class="line">         &quot;--tables &gt; 1&quot;)</span><br><span class="line">    oltp_prepare() --common中的prepare，建表。</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>run:<ul>
+<li>thread_init()<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">-- 在run之前，每个线程的初始化工作。</span><br><span class="line">function thread_init()</span><br><span class="line">    drv = sysbench.sql.driver()</span><br><span class="line">    con = drv:connect()</span><br><span class="line"></span><br><span class="line">    -- 创建语句，并初始化参数位</span><br><span class="line">    local ranges = string.rep(&quot;k BETWEEN ? AND ? OR &quot;,</span><br><span class="line">        sysbench.opt.number_of_ranges - 1) ..</span><br><span class="line">        &quot;k BETWEEN ? AND ?&quot;</span><br><span class="line"></span><br><span class="line">    stmt = con:prepare(string.format([[</span><br><span class="line">        SELECT count(k)</span><br><span class="line">        FROM sbtest1</span><br><span class="line">        WHERE %s]], ranges))</span><br><span class="line"></span><br><span class="line">    params = &#123;&#125;</span><br><span class="line">    for j = 1, sysbench.opt.number_of_ranges*2 do</span><br><span class="line">        params[j] = stmt:bind_create(sysbench.sql.type.INT)</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    stmt:bind_param(unpack(params))</span><br><span class="line">    </span><br><span class="line">    -- sysbench.opt.threads：线程个数</span><br><span class="line">    -- sysbench.opt.table_size：表的行数</span><br><span class="line">    rlen = sysbench.opt.table_size / sysbench.opt.threads</span><br><span class="line"></span><br><span class="line">    -- sysbench.tid：当前线程ID</span><br><span class="line">    -- sysbench.opt.threads：线程个数，--threads指定</span><br><span class="line">    thread_id = sysbench.tid % sysbench.opt.threads</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>event()<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-- 为了防止范围查询的重叠，我们需要将整个表划分为&#x27;--threads&#x27;段，然后让每个线程使用自己的段</span><br><span class="line">-- 随机生成设置每个查询的参数</span><br><span class="line">function event()</span><br><span class="line">    for i = 1, sysbench.opt.number_of_ranges*2, 2 do</span><br><span class="line">        local rmin = rlen * thread_id</span><br><span class="line">        local rmax = rmin + rlen</span><br><span class="line">        local val = sysbench.rand.default(rmin, rmax)</span><br><span class="line">        params[i]:set(val)</span><br><span class="line">        params[i+1]:set(val + sysbench.opt.delta)</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    stmt:execute()</span><br><span class="line"></span><br><span class="line">    check_reconnect()</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>cleanup:drop表</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Guangyu Yang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/Sysbench%E4%BD%BF%E7%94%A8%E4%B8%8E%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90/">https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/Sysbench%E4%BD%BF%E7%94%A8%E4%B8%8E%E8%84%9A%E6%9C%AC%E5%88%86%E6%9E%90/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/yanggyc/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/MySQL%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E8%BF%9B%E5%BA%A6/"></a>
+            
+            
+            <a class="next" rel="next" href="/yanggyc/2022/12/26/%E5%B7%A5%E5%85%B7/K8S%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"></a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

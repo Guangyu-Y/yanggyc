@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>Hexo</title>
 
 
 
@@ -196,7 +196,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title"></h1>
             
                 <div class="post-meta">
                     
@@ -205,7 +205,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;16:02:57</a>
+                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;19:16:00</a>
                         </span>
                     
                     
@@ -214,19 +214,33 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+            <h3 id="1-mysql数据库在连接时报"><a href="#1-mysql数据库在连接时报" class="headerlink" title="1.mysql数据库在连接时报"></a>1.mysql数据库在连接时报</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR 2002 (HY000): Can&#x27;t connect to local MySQL server through socket &#x27;/var/lib/mysql/mysql.sock&#x27; (2)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>先查看 /etc/rc.d/init.d/mysqld status 看看m y s q l 是否已经启动.</li>
+<li>确定你的mysql.sock是不是在那个位置，<br>mysql -u 你的mysql用户名 -p -S /var/lib/mysql/mysql.sock</li>
+<li>试试：service mysqld start</li>
+<li>如果是权限问题，则先改变权限 #chown -R mysql:mysql /var/lib/mysql</li>
+<li>在确认文件存在的情况下，备份文件，重启mysql服务。</li>
+</ol>
+<h3 id="2-针对mysql数据库忘记root用户的密码"><a href="#2-针对mysql数据库忘记root用户的密码" class="headerlink" title="2.针对mysql数据库忘记root用户的密码"></a>2.针对mysql数据库忘记root用户的密码</h3><ol>
+<li>配置忽略密码的选项，路径：/etc/my.cnf  skip-grant-tables</li>
+</ol>
+<h3 id="3-mysql-在my-cnf中的部分配置"><a href="#3-mysql-在my-cnf中的部分配置" class="headerlink" title="3.mysql 在my.cnf中的部分配置"></a>3.mysql 在my.cnf中的部分配置</h3><ol>
+<li>character_set_server=utf8 #服务端字符集设置</li>
+<li>init_connect=’SET NAMES utf8’</li>
+<li>lower_case_table_names=1 #忽略大小写</li>
+<li>max_connections=5000 #数据库最大连接数配置</li>
+<li>max_allowed_packet = 100M限制server接受的数据包的大小</li>
+</ol>
+<h3 id="4-数据类型"><a href="#4-数据类型" class="headerlink" title="4.数据类型"></a>4.数据类型</h3><p>MySQL的四种BLOB类型<br>类型 大小(单位：字节)<br>TinyBlob 最大 255<br>Blob 最大 65K<br>MediumBlob 最大 16M<br>LongBlob 最大 4G  </p>
+<h3 id="5-初始化修改密码"><a href="#5-初始化修改密码" class="headerlink" title="5.初始化修改密码"></a>5.初始化修改密码</h3><ul>
+<li>初始化密码路径：/var/log/mysql.log</li>
+<li></li>
+</ul>
+<h3 id="6-在修改了my-cnf之后，错误日志为无权限打开文件。"><a href="#6-在修改了my-cnf之后，错误日志为无权限打开文件。" class="headerlink" title="6.在修改了my.cnf之后，错误日志为无权限打开文件。"></a>6.在修改了my.cnf之后，错误日志为无权限打开文件。</h3><ol>
+<li>查看selinux状态；<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/sestatus -v ##如果SELinux status参数为enabled即为开启状态</span><br><span class="line"></span><br><span class="line">getenforce ##也可以用这个命令检查</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li></li>
+</ol>
 
         </div>
 
@@ -241,7 +255,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/">https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/</a></span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/</a></span>
                     </p>
                 
                 
@@ -274,8 +288,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/"></a>
+                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql%E5%AE%89%E8%A3%85%E9%A1%BA%E5%BA%8F/"></a>
             
+            
+            <a class="next" rel="next" href="/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/LoadRunner%E8%84%9A%E6%9C%AC%E5%87%BD%E6%95%B0/"></a>
             
         </section>
 

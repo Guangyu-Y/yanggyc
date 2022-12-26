@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>Hexo</title>
 
 
 
@@ -196,7 +196,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title"></h1>
             
                 <div class="post-meta">
                     
@@ -205,7 +205,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;16:02:57</a>
+                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;19:16:00</a>
                         </span>
                     
                     
@@ -214,19 +214,80 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <h3 id="1、数学概况"><a href="#1、数学概况" class="headerlink" title="1、数学概况"></a>1、数学概况</h3><img src="E:\01_文件\笔记\数学基础\math.png" alt="概述" style="zoom:100%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3 id="2、数据类型-分类"><a href="#2、数据类型-分类" class="headerlink" title="2、数据类型(分类)"></a>2、数据类型(分类)</h3><h4 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h4><ol>
+<li>离散型（N）</li>
+<li>稠密型（Q）</li>
+<li>连续型（R）<blockquote>
+<p>一个实数轴中，取一个无限小的 区间，可能不包含一个数据集的元素。则这个数据集为离散型。若这个小区间无论取多小，一定包含这个数据集的元素，则这个数据集是稠密的。如自然数是离散的，有理数是稠密的，但不是连续的。实数是稠密、连续的。一般情况下直接分为离散型与连续性数据。</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>离散型数据：指一个只取有限个或可数无限个数值的随机变量。</li>
+<li>连续型数据：指一个取任何实数的概率都为0的变量。</li>
+</ul>
+<h4 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h4><ul>
+<li>横截面数据：一个时间点、段内的所有数据。如：上个月的销量。</li>
+<li>时间序列数据：考虑进时间属性的数据。如：股票的市值随时间的变动。去年的销量。</li>
+<li>面板数据：时间属性 + 空间属性的数据。去年一年所有省市的销量数据。</li>
+</ul>
+<h4 id="2-3"><a href="#2-3" class="headerlink" title="2.3"></a>2.3</h4><ul>
+<li>定类尺度（无序）如，国籍：中国<ul>
+<li>不可排序</li>
+<li>不可运算</li>
+</ul>
+</li>
+<li>定序尺度（有序）如，健康状况：良好<ul>
+<li>可排序</li>
+<li>不可运算</li>
+</ul>
+</li>
+<li>【数值】定距尺度（0点有意义）如，出身年份：1981<ul>
+<li>0点有特定意义</li>
+<li>可排序、可运算</li>
+</ul>
+</li>
+<li>【数值】定比尺度（0点表示不存在）如，体重：56公斤<ul>
+<li>可排序，可运算</li>
+<li>0点无特定意义 </li>
+</ul>
+</li>
+</ul>
+<h3 id="3、数学模型"><a href="#3、数学模型" class="headerlink" title="3、数学模型"></a>3、数学模型</h3><ol>
+<li><p>数学分析模型</p>
+<ul>
+<li>传统统计模型（解决结构问题） -&gt; 回归模型 -&gt; 计量</li>
+<li>数据挖掘模型（解决预测模型）-&gt; 决策树、神经网络、支持向量机、贝叶斯网络、关联规则…</li>
+</ul>
+</li>
+<li><p>传统回归模型</p>
+<ul>
+<li>最简单的回归模型是一元线性回归模型</li>
+</ul>
+<p>$$<br>Y = \beta_0 + \beta_1X + \epsilon<br>$$</p>
+<ul>
+<li>扩展到多个自变量的形式，多元线性回归模型<br>$$<br>Y = \beta_0 + \beta_2X_2 +  \beta_3X_3 + … + \beta_pX_p + \epsilon<br>$$</li>
+<li>非线性形式，广义回归模型<br>$$<br>Y = f(X_1,X_2,…,X_3) + \epsilon<br>$$</li>
+</ul>
+</li>
+<li><p>常用的回归模型</p>
+<ol>
+<li>横截面模型：<strong>多元回归</strong>、<strong>逻辑回归</strong>、托宾回归<em>【0膨胀问题(用户0过多，影响模型训练)】</em>、截尾回归</li>
+<li>时间序列模型：<strong>ARIMA</strong>(一次只能分析一个时间序列)、HARCH（分析时间序列里的异方差）、协整（多个稳定的时间序列）</li>
+<li>面板数据模型：固定效应/随机效应、空间计量模型</li>
+<li>结构方程模型：（多个多元回归拼成方程组，多个有关系的Y拼成方程组）</li>
+<li>向量自回归模型（VAR）：（Y也对X有影响）</li>
+</ol>
+</li>
+</ol>
+<p>​4. 数据挖掘模型<br>    1. 支持向量机：</p>
+<blockquote>
+<p>陈纪修视频课<br>佳俊平统计学<br>《统计推断》<br>线性代数应该这样学<br>普林斯顿微积分读本</p>
+</blockquote>
 
         </div>
 
@@ -241,7 +302,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/">https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/</a></span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/Part1/">https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/Part1/</a></span>
                     </p>
                 
                 
@@ -274,8 +335,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/"></a>
+                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/Part1-cnblog/"></a>
             
+            
+            <a class="next" rel="next" href="/yanggyc/2022/12/26/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/"></a>
             
         </section>
 

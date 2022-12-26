@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>Hexo</title>
 
 
 
@@ -196,7 +196,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title"></h1>
             
                 <div class="post-meta">
                     
@@ -205,7 +205,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;16:02:57</a>
+                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;19:16:00</a>
                         </span>
                     
                     
@@ -214,20 +214,11 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <h3 id="1-创建数组"><a href="#1-创建数组" class="headerlink" title="1. 创建数组"></a>1. 创建数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  1. arange函数</span></span><br><span class="line">np.arange() <span class="comment"># 开始，结束，步长</span></span><br><span class="line"><span class="comment"># 2. linspace   等差数组</span></span><br><span class="line">np.linspace(<span class="number">0</span>,<span class="number">10</span>,<span class="number">21</span>)<span class="comment">#等差数组，元素间隔（10-0）/(21-1)</span></span><br><span class="line"><span class="comment"># 3. 等比数组</span></span><br><span class="line">np.logspace(<span class="number">0</span>,<span class="number">100</span>,<span class="number">11</span>)<span class="comment">#对数数组，10为底</span></span><br><span class="line">np.logspace(<span class="number">1</span>,<span class="number">6</span>,<span class="number">6</span>,base=<span class="number">2</span>)<span class="comment">#2为底，幂为等差数列</span></span><br><span class="line"><span class="comment"># 4. 全0数组</span></span><br><span class="line">np.zeros(<span class="number">3</span>)<span class="comment">#全零的一维数组</span></span><br><span class="line">np.zeros((<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line"><span class="comment"># 5. 全1的数组</span></span><br><span class="line">np.ones(<span class="number">3</span>)<span class="comment">#全一的一维数组</span></span><br><span class="line">a=np.ones((<span class="number">3</span>,<span class="number">3</span>))<span class="comment">#全一的二维数组</span></span><br><span class="line"><span class="comment"># 6. 对角数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 7. 单位数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 8. full</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 9. np.empty((2,3)) 空数组</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="2-随机数的产生"><a href="#2-随机数的产生" class="headerlink" title="2. 随机数的产生"></a>2. 随机数的产生</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">np.random.randint(0,50,6)  #  [0,50)的6个数</span><br><span class="line">np.random.rand(5) #0到1之间随机浮点数</span><br><span class="line">np.random.randn(5) #标准正态分布，均值为0，方差为1</span><br><span class="line">np.random.randn(5) # 返回随机的浮点数[0.0,1.0)</span><br><span class="line"></span><br><span class="line">np.random.seed(1)#固定种子，随机数生成</span><br><span class="line">np.random.rand(5)#0到1之间随机浮点数</span><br><span class="line"></span><br><span class="line">np.random.standard_normal(size=(3, 4))   #二维数组，标准正态分布</span><br><span class="line">np.random.normal(0.5,0.1,size=(3, 4)) #均值，标准差，shape</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<h3 id="3-数据类型"><a href="#3-数据类型" class="headerlink" title="3. 数据类型"></a>3. 数据类型</h3>
         </div>
 
         
@@ -241,7 +232,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/">https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/</a></span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/python/numpy%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">https://guangyu-y.github.io/yanggyc/2022/12/26/python/numpy%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/</a></span>
                     </p>
                 
                 
@@ -274,8 +265,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/"></a>
+                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/linux/%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B%E6%89%A7%E8%A1%8C/"></a>
             
+            
+            <a class="next" rel="next" href="/yanggyc/2022/12/26/python/python%20%E6%89%A7%E8%A1%8C%E8%BF%9C%E7%A8%8B%20shell/"></a>
             
         </section>
 

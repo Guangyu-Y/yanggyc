@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>Hexo</title>
 
 
 
@@ -196,7 +196,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title"></h1>
             
                 <div class="post-meta">
                     
@@ -205,7 +205,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;16:02:57</a>
+                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;19:16:00</a>
                         </span>
                     
                     
@@ -214,19 +214,36 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <h3 id="win11-wsl安装ubuntu报错"><a href="#win11-wsl安装ubuntu报错" class="headerlink" title="win11 wsl安装ubuntu报错"></a><strong>win11 wsl安装ubuntu报错</strong></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">错误</span><br><span class="line">please restart WSL with the following command and try again：</span><br><span class="line">wsl --shutdown</span><br><span class="line">wsl --unregister DISTRO_NAME </span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案</strong><br>造成该问题的原因是WSL版本由原来的WSL1升级到WSL2后，内核没有升级，前往微软WSL官网下载安装适用于 x64 计算机的最新 WSL2 Linux 内核更新包即可。</p>
+<p>下载链接： <a target="_blank" rel="noopener" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi</a><br>安装好之后可以通过以下命令查看wsl的版本</p>
+<h4 id="wsl迁移、移动ubuntu到D盘"><a href="#wsl迁移、移动ubuntu到D盘" class="headerlink" title="wsl迁移、移动ubuntu到D盘"></a>wsl迁移、移动ubuntu到D盘</h4><ol>
+<li>关闭wsl。不关闭也行，导出时会自动关闭</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --shutdown</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>导出Ubuntu20.04LTS。我这里在D盘创建了文件夹D:\wsl\images\</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --export Ubuntu20.04LTS D:\wsl\images\my_ubuntu.tar</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>卸载当前Ubuntu20.04LTS</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --unregister Ubuntu20.04LTS</span><br></pre></td></tr></table></figure></li>
+<li><p>导入刚才导出的的my_ubuntu.tar，还使用之前的名字Ubuntu20.04LTS，不然修改默认用户麻烦</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --import Ubuntu20.04LTS D:\wsl\my_ubuntu D:\wsl\images\my_ubuntu.tar</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<ol start="5">
+<li>设置默认用户。设置成你的用户名，不设置的话用root也行，最好设置一下</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu2004 config --default-user your_username</span><br></pre></td></tr></table></figure>
+
+<h3 id="Win10-WSL2-Ubuntu18-04-发生-Segmentation-fault"><a href="#Win10-WSL2-Ubuntu18-04-发生-Segmentation-fault" class="headerlink" title="Win10 WSL2 Ubuntu18.04 发生 Segmentation fault"></a>Win10 WSL2 Ubuntu18.04 发生 Segmentation fault</h3><p><strong>在 Ubuntu 中设置 ulimit</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ulimit -c unlimited　　#（只对当前shell进程有效）</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或在~/.bashrc　的最后加入：</span> </span><br><span class="line">ulimit -c unlimited #（一劳永逸）</span><br></pre></td></tr></table></figure>
+
 
         </div>
 
@@ -241,7 +258,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/">https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/</a></span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/%E5%B7%A5%E5%85%B7/wsl%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">https://guangyu-y.github.io/yanggyc/2022/12/26/%E5%B7%A5%E5%85%B7/wsl%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</a></span>
                     </p>
                 
                 
@@ -274,8 +291,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/"></a>
+                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E5%B7%A5%E5%85%B7/vim%E9%85%8D%E7%BD%AE/"></a>
             
+            
+            <a class="next" rel="next" href="/yanggyc/2022/12/26/%E5%B7%A5%E5%85%B7/%E4%B8%80%E4%B8%AApython%E7%9A%84%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%84%9A%E6%9C%AC/"></a>
             
         </section>
 

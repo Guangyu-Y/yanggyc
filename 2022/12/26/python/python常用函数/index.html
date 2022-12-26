@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Guangyu Yang">
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/yanggyc/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/yanggyc/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/yanggyc/js/script.js"></script>
+    
+    <script src="/yanggyc/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/yanggyc/">Yanggyc&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/yanggyc/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title"></h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Guangyu Yang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;19:16:00</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="1-python内置函数"><a href="#1-python内置函数" class="headerlink" title="1. python内置函数"></a>1. python内置函数</h3><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>函数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abs(x)</td>
+<td>返回x的绝对值，类型随x</td>
+</tr>
+<tr>
+<td>pow(x,n)</td>
+<td>返回x的n次方</td>
+</tr>
+<tr>
+<td>max(n1, n2, …)</td>
+<td>返回大值</td>
+</tr>
+<tr>
+<td>min(n1, n2, …)</td>
+<td>返回小值</td>
+</tr>
+<tr>
+<td>round(x [,n])</td>
+<td>默认返回浮点数x的四舍五入值,遇0.5取偶</td>
+</tr>
+</tbody></table>
+<h3 id="2-科学计算库"><a href="#2-科学计算库" class="headerlink" title="2. 科学计算库"></a>2. 科学计算库</h3><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>函数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fabs(x)</td>
+<td>返回x的绝对值，类型是浮点数</td>
+</tr>
+<tr>
+<td>ceil(x)</td>
+<td>取x的上入整数，如math.ceil(4.1)返回5</td>
+</tr>
+<tr>
+<td>ﬂoor(x)</td>
+<td>取x的下入整数，如math.ﬂoor(4.9)返回4</td>
+</tr>
+<tr>
+<td>exp(x)</td>
+<td>返回e的x次幂，e是自然常数</td>
+</tr>
+<tr>
+<td>sqrt(x)</td>
+<td>返回x的平方根，返回值是ﬂoat类型</td>
+</tr>
+<tr>
+<td>modf(x)</td>
+<td>返回x的整数部分和小数部分，两部分的符号与x相同，整数部分以浮点型表示。例如 math.modf(4.333)，返回元组(0.3330000000000002, 4.0)</td>
+</tr>
+<tr>
+<td>log10(x)</td>
+<td>返回以10为基数的x的对数，返回值类型是浮点数</td>
+</tr>
+<tr>
+<td>log(x,y)</td>
+<td>返回以y为基数的x的对数，返回值类型是浮点数</td>
+</tr>
+</tbody></table>
+<h3 id="3-字符串常用方法"><a href="#3-字符串常用方法" class="headerlink" title="3. 字符串常用方法"></a>3. 字符串常用方法</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ﬁnd</td>
+<td>检测 str 是否包含在 mystr中，如果是返回开始的索 引值，否则返回-1</td>
+<td>mystr.ﬁnd(str, start=0, end=len(mystr))</td>
+</tr>
+<tr>
+<td>count</td>
+<td>返回 str在start和end之间 在 mystr里面出现的次数</td>
+<td>mystr.count(str, start=0, end=len(mystr))</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>把 mystr 中的 str1 替换成 str2,如果 count 指定，则替换不超过 count 次</td>
+<td>mystr.replace(str1, str2, mystr.count(str1))</td>
+</tr>
+<tr>
+<td>split</td>
+<td>以 str 为分隔符切片 mystr，如果 maxsplit有指定 值，则仅分隔 maxsplit次</td>
+<td>mystr.split(str=” “, 2)</td>
+</tr>
+<tr>
+<td>partition</td>
+<td>把mystr以str分割成三部分,str前，str和str后</td>
+<td>mystr.partition(str)</td>
+</tr>
+<tr>
+<td>join</td>
+<td>mystr 中每个字符后面插入str,构造出一个新的字符串</td>
+<td>mystr.join(str)</td>
+</tr>
+<tr>
+<td>lower</td>
+<td>转换 mystr 中所有大写字符为小写</td>
+<td>mystr.lower()</td>
+</tr>
+<tr>
+<td>upper</td>
+<td>转换 mystr 中的小写字母为大写</td>
+<td>mystr.upper()</td>
+</tr>
+<tr>
+<td>islower</td>
+<td>判断指定字符是不是小写</td>
+<td>mystr.islower()</td>
+</tr>
+<tr>
+<td>isupper</td>
+<td>判断指定字符是不是大写</td>
+<td>mystr.isupper()</td>
+</tr>
+<tr>
+<td>strip</td>
+<td>删除mystr字符串两端的特殊字符</td>
+<td>mystr.strip()</td>
+</tr>
+</tbody></table>
+<h3 id="4-format的使用"><a href="#4-format的使用" class="headerlink" title="4. format的使用"></a>4. format的使用</h3><h4 id="4-1-字符串format的填充和对齐"><a href="#4-1-字符串format的填充和对齐" class="headerlink" title="4.1 字符串format的填充和对齐"></a>4.1 字符串format的填充和对齐</h4><blockquote>
+<p>骨架部分”{:}”.format()<br>写在冒号紧后边的是用来填充的字符，可以不写，默认是用空格填充<br>对齐的方式：^ &lt;  &gt; 分别对应居中、左对齐、右对齐<br>最后部分是带宽（最后完整字符串的长度）</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;:&gt;14&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;江南燕&#x27;</span>))<span class="comment">#右对齐 </span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;:&lt;14&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;江南燕&#x27;</span>))<span class="comment">#左对齐 </span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;:*&lt;14&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;江南燕&#x27;</span>))<span class="comment">#左对齐,用*填充 </span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;:&amp;&gt;14&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;江南燕&#x27;</span>))<span class="comment">#右对齐,用&amp;填充</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-2-精度"><a href="#4-2-精度" class="headerlink" title="4.2 精度"></a>4.2 精度</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;:.2f&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">3.1415926</span>)</span><br><span class="line"><span class="string">&quot;&#123;:.0f&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">3.1415926</span>)</span><br><span class="line"><span class="string">&quot;&#123;:+.2f&#125;&quot;</span>.<span class="built_in">format</span>(-<span class="number">3.1415926</span>)</span><br><span class="line"><span class="string">&quot;&#123;:+.2f&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">3.1415926</span>)</span><br><span class="line"><span class="string">&quot;&#123;:.2%&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">3.1415926</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-千分位分割符"><a href="#4-3-千分位分割符" class="headerlink" title="4.3 千分位分割符"></a>4.3 千分位分割符</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&#123;:,&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">98123456</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="5-列表的常用方法"><a href="#5-列表的常用方法" class="headerlink" title="5. 列表的常用方法"></a>5. 列表的常用方法</h3><table>
+<thead>
+<tr>
+<th>作用</th>
+<th>方法名称</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>修改元素</td>
+<td>-</td>
+<td>需要修改的元素进行切片重新赋值</td>
+</tr>
+<tr>
+<td>添加元素方法一</td>
+<td>append</td>
+<td>每次只能添加一个元素在列表所有元素的最后</td>
+</tr>
+<tr>
+<td>添加元素方法二</td>
+<td>extend</td>
+<td>可以将可迭代元素中的元素逐个添加到列表的最后</td>
+</tr>
+<tr>
+<td>指定位置插入元素</td>
+<td>insert</td>
+<td>两个参数,第一个参数确定插入的位置,第二个参数确定要插入的 value</td>
+</tr>
+<tr>
+<td>查找元素</td>
+<td>in和not in</td>
+<td>返回布尔值,判断目标元素是否在指定列表中</td>
+</tr>
+<tr>
+<td>删除元素方法一</td>
+<td>del</td>
+<td>通过切片方式删除元素</td>
+</tr>
+<tr>
+<td>删除元素方法二</td>
+<td>pop</td>
+<td>通过元素下标抛出元素</td>
+</tr>
+<tr>
+<td>删除元素方法三</td>
+<td>remove</td>
+<td>通过元素value值删除元素</td>
+</tr>
+<tr>
+<td>正序排序</td>
+<td>sort</td>
+<td>对列表元素按照特定顺序进行排序</td>
+</tr>
+<tr>
+<td>逆置排序</td>
+<td>reverse</td>
+<td>对列表元素进行逆置排</td>
+</tr>
+</tbody></table>
+<h3 id="6-字典的操作"><a href="#6-字典的操作" class="headerlink" title="6. 字典的操作"></a>6. 字典的操作</h3><table>
+<thead>
+<tr>
+<th>操作目的</th>
+<th>操作方法1</th>
+<th>操作方法2</th>
+<th>操作方法3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>判断key是否存在</td>
+<td>in</td>
+<td>get</td>
+<td>-</td>
+</tr>
+<tr>
+<td>删除字典元素</td>
+<td>dict.pop</td>
+<td>dict.popitem</td>
+<td>del</td>
+</tr>
+<tr>
+<td>清空字典</td>
+<td>dict.clear</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>获取键(keys)</td>
+<td>dict.keys</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>获取值(values)</td>
+<td>dict.values</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id="7-集合的常用操作"><a href="#7-集合的常用操作" class="headerlink" title="7. 集合的常用操作"></a>7. 集合的常用操作</h3><table>
+<thead>
+<tr>
+<th>基本运算</th>
+<th>运算符号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>包含</td>
+<td>in</td>
+</tr>
+<tr>
+<td>不包含</td>
+<td>not in</td>
+</tr>
+<tr>
+<td>等于</td>
+<td>==</td>
+</tr>
+<tr>
+<td>不等于</td>
+<td>!=</td>
+</tr>
+<tr>
+<td>子集</td>
+<td>&lt;</td>
+</tr>
+<tr>
+<td>合集</td>
+<td>|</td>
+</tr>
+<tr>
+<td>交集</td>
+<td>&amp;</td>
+</tr>
+<tr>
+<td>差集</td>
+<td>-</td>
+</tr>
+<tr>
+<td>对称差分</td>
+<td>^</td>
+</tr>
+<tr>
+<td>判断是否为子集</td>
+<td>issubset</td>
+</tr>
+<tr>
+<td>判断是否为父集</td>
+<td>issuperset</td>
+</tr>
+<tr>
+<td>删除集合元素</td>
+<td>pop\remove</td>
+</tr>
+<tr>
+<td>增加集合元素</td>
+<td>add</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Guangyu Yang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/python/python%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">https://guangyu-y.github.io/yanggyc/2022/12/26/python/python%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/yanggyc/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/python/python%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0%E6%95%B4%E7%90%86/"></a>
+            
+            
+            <a class="next" rel="next" href="/yanggyc/2022/12/26/python/python%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE100%E4%BE%8B-part1/"></a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

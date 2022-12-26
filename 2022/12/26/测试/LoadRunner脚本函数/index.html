@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>Hexo</title>
 
 
 
@@ -127,76 +127,11 @@
                 <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
-
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
-    }
-
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
-
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
-    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title"></h1>
             
                 <div class="post-meta">
                     
@@ -205,7 +140,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;16:02:57</a>
+                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;19:16:00</a>
                         </span>
                     
                     
@@ -214,19 +149,45 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+            <ul>
+<li>lr_save_string(“A”,”B”); //将lr中定义的参数B保存为A。</li>
+<li>lr_start_transaction(“transaction_name”); //事务开始<ul>
+<li>transaction_name:事务名</li>
+</ul>
+</li>
+<li>lr_end_transaction(“transaction_name”,status); //事务结束<ul>
+<li>transaction_name:事务名</li>
+<li>status:事务的结束状态{LR_PASS(通过)、LR_FAIL(失败)、LR_AUTO（自动）、 LR_STOP(暂停)}</li>
+</ul>
+</li>
+<li>lr_set_transaction_status(Status);//事务结束前设置事务状态</li>
+<li>long id = lr_start_transaction_instance（const char * transaction_name，long handle）;//标记事务实例的开始。事务实例是具有transaction_name的事务的发生。实例通过其句柄来识别，其将它们与同一事务的其他实例区分开。<ul>
+<li>transaction_name：事务的名称。</li>
+<li>handle：父事务的句柄。值为0指示VuGen创建新的父事务。</li>
+</ul>
+</li>
+<li>lr_end_transaction_instance（id，LR_PASS）;//</li>
+<li>lr_rendezvous(“集合点名”);//设置集合点</li>
+<li>web_url</li>
+<li>web_custom_request();//函数允许使用任何方法或主体创建自定义的HTTP请求，其使用范围更广。其中，Body中，如果是json类型的，引号需要使用 \ 进行转义。其他类型的，直接跟=后面即可。</li>
+<li>web_image</li>
+<li>web_add_cookie</li>
+<li>web_add_header</li>
+<li>web_reg_find(“Search=Body”,”Text=user_id”,”SaveCount=userId”,LAST);//验证响应是否符合期望，如通过搜索文本字符串<ul>
+<li>Search : 搜索字符串的搜索范围，如ALL、Body、Header</li>
+<li>Text : 搜索的字符串</li>
+<li>SaveCount : 匹配的数量，并存储在一个参数中</li>
+</ul>
+</li>
+<li>web_reg_save_param(“user_token”,”LB=&quot;user_token&quot;:&quot;“,”RB=&quot;“,”Ord=1”,”Notfound=empty”,”Search=Body”,LAST);//<ul>
+<li>LB 参数的左边界</li>
+<li>RB 参数的右边界</li>
+<li>Ord 匹配的序号位置，默认为1</li>
+<li>Notfound 当没有找到边界时的处理选项，选项有：Notfound=error - Notfound=empty</li>
+<li>Search : 搜索字符串的搜索范围，如ALL、Body、Header</li>
+</ul>
+</li>
+</ul>
 
         </div>
 
@@ -241,7 +202,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/">https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/</a></span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/LoadRunner%E8%84%9A%E6%9C%AC%E5%87%BD%E6%95%B0/">https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/LoadRunner%E8%84%9A%E6%9C%AC%E5%87%BD%E6%95%B0/</a></span>
                     </p>
                 
                 
@@ -274,8 +235,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/"></a>
+                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/"></a>
             
+            
+            <a class="next" rel="next" href="/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/MySQL%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E8%BF%9B%E5%BA%A6/"></a>
             
         </section>
 

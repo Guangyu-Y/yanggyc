@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>Hexo</title>
 
 
 
@@ -196,7 +196,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title"></h1>
             
                 <div class="post-meta">
                     
@@ -205,7 +205,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;16:02:57</a>
+                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;19:16:00</a>
                         </span>
                     
                     
@@ -214,19 +214,11 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <h2 id="Oracle数据库创建用户以及表空间"><a href="#Oracle数据库创建用户以及表空间" class="headerlink" title="Oracle数据库创建用户以及表空间"></a>Oracle数据库创建用户以及表空间</h2><h3 id="1-连接数据库"><a href="#1-连接数据库" class="headerlink" title="1. 连接数据库"></a>1. 连接数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切换系统用户并登陆数据库</span></span><br><span class="line">su - oracle </span><br><span class="line">sqlplus sys/1q2w3e4r as sysdba</span><br></pre></td></tr></table></figure>
+<h3 id="2-查询及创建表空间"><a href="#2-查询及创建表空间" class="headerlink" title="2. 查询及创建表空间"></a>2. 查询及创建表空间</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> file_name <span class="keyword">from</span> dba_data_files;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span>space fw_index datafile <span class="string">&#x27;/u01/app/oracle/prod/fw_index.dbf&#x27;</span> size <span class="number">1</span>G autoextend <span class="keyword">on</span> next <span class="number">100</span>M;</span><br><span class="line"><span class="keyword">create</span> temporary tablespace fw_index_t tempfile <span class="string">&#x27;/u01/app/oracle/prod/fw_index_t.dbf&#x27;</span> size <span class="number">512</span>M autoextend <span class="keyword">on</span> next <span class="number">100</span>M;</span><br></pre></td></tr></table></figure>
+<h3 id="3-创建用户并分配表空间"><a href="#3-创建用户并分配表空间" class="headerlink" title="3.创建用户并分配表空间"></a>3.创建用户并分配表空间</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> jn_acct identified <span class="keyword">by</span> &quot;1q2w3e4r&quot; <span class="keyword">default</span> tablespace fw_index temporary tablespace fw_index;</span><br></pre></td></tr></table></figure>
+<h3 id="4-分配权限"><a href="#4-分配权限" class="headerlink" title="4.分配权限"></a>4.分配权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> <span class="keyword">connect</span>,resource <span class="keyword">to</span> jn_acct;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> user_name quota <span class="keyword">on</span> tablespace_name;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
         </div>
 
@@ -241,7 +233,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/">https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/</a></span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E8%A1%A8%E7%A9%BA%E9%97%B4/">https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E8%A1%A8%E7%A9%BA%E9%97%B4/</a></span>
                     </p>
                 
                 
@@ -274,8 +266,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/"></a>
+                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/"></a>
             
+            
+            <a class="next" rel="next" href="/yanggyc/2022/12/26/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL%E4%B8%ADcase%E8%AF%AD%E5%8F%A5%E7%94%A8%E6%B3%95/"></a>
             
         </section>
 

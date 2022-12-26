@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>Hexo</title>
 
 
 
@@ -196,7 +196,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title"></h1>
             
                 <div class="post-meta">
                     
@@ -205,7 +205,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;16:02:57</a>
+                        Date: <a href="#">December 26, 2022&nbsp;&nbsp;19:16:00</a>
                         </span>
                     
                     
@@ -214,20 +214,31 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+            <h3 id="分库分表中涉及到的表类型"><a href="#分库分表中涉及到的表类型" class="headerlink" title="分库分表中涉及到的表类型"></a>分库分表中涉及到的表类型</h3><ul>
+<li>分库不分表<ul>
+<li>ER表（2）x_client  x_tranhist</li>
+<li>普通表（1）x_trailbox</li>
+</ul>
+</li>
+<li>分库分表<ul>
+<li>ER表（2）x_client1 x_tranhist1</li>
+<li>普通表（1）x_teller</li>
+</ul>
+</li>
+<li>全局表（1）x_organization</li>
+</ul>
+<h3 id="DDL语句"><a href="#DDL语句" class="headerlink" title="DDL语句"></a>DDL语句</h3><h4 id="drop-table-所有表涉及7"><a href="#drop-table-所有表涉及7" class="headerlink" title="drop table(所有表涉及7)"></a>drop table(所有表涉及7)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所有类型的表都涉及</span><br></pre></td></tr></table></figure>
+<h4 id="create-table语句-所有表涉及7"><a href="#create-table语句-所有表涉及7" class="headerlink" title="create table语句(所有表涉及7)"></a>create table语句(所有表涉及7)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">关注在创建分库分表的过程中,能不能创建分表</span><br></pre></td></tr></table></figure>
+<h4 id="create-drop-index语句-所有表涉及7"><a href="#create-drop-index语句-所有表涉及7" class="headerlink" title="create/drop index语句(所有表涉及7)"></a>create/drop index语句(所有表涉及7)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 涉及所有表的非主键的索引的创建</span><br><span class="line">2 涉及所有表的非主键的索引的删除</span><br></pre></td></tr></table></figure>
+<h4 id="alter-table语句-所有表涉及7"><a href="#alter-table语句-所有表涉及7" class="headerlink" title="alter table语句(所有表涉及7)"></a>alter table语句(所有表涉及7)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.主键的添加</span><br><span class="line">2.主键的删除</span><br><span class="line">3.普通字段的插入</span><br><span class="line">4.普通字段的修改</span><br><span class="line">5.普通字段的删</span><br><span class="line">6.普通字段的重命名</span><br></pre></td></tr></table></figure>
+<h3 id="DML语句"><a href="#DML语句" class="headerlink" title="DML语句"></a>DML语句</h3><h4 id="insert语句-所有表涉及7"><a href="#insert语句-所有表涉及7" class="headerlink" title="insert语句(所有表涉及7)"></a>insert语句(所有表涉及7)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.insert into 语句，指定字段名</span><br><span class="line">2.insert into 语句，不指定字段名</span><br><span class="line">3.insert into select（select的表不限，可以选择分表进行select后进行插入）</span><br></pre></td></tr></table></figure>
+<h4 id="update-所有表涉及7"><a href="#update-所有表涉及7" class="headerlink" title="update(所有表涉及7)"></a>update(所有表涉及7)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.更新普通字段（选择性的更新date类型的字段）</span><br><span class="line">2.更新多字段（选择性的更新date类型的字段）</span><br><span class="line">3.update select子查询的支持（子查询中用分表的表或分库的表或全局表）7*3</span><br></pre></td></tr></table></figure>
+<h4 id="select语句"><a href="#select语句" class="headerlink" title="select语句"></a>select语句</h4><h5 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.select *</span><br><span class="line">2.select某字段</span><br></pre></td></tr></table></figure>
+<h4 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.select后加别名</span><br><span class="line">2.as使用别名</span><br></pre></td></tr></table></figure>
+<h4 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.case 字段 when（as/与不as）</span><br><span class="line">2.case when 字段（as/与不as）</span><br></pre></td></tr></table></figure>
+<h4 id="concat语句"><a href="#concat语句" class="headerlink" title="concat语句"></a>concat语句</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat()</span><br></pre></td></tr></table></figure>
+<h4 id="Aggregate"><a href="#Aggregate" class="headerlink" title="Aggregate"></a>Aggregate</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">count avg sum max min distinct</span><br><span class="line">group by</span><br></pre></td></tr></table></figure>
+<h4 id="group"><a href="#group" class="headerlink" title="group"></a>group</h4>
         </div>
 
         
@@ -241,7 +252,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/">https://guangyu-y.github.io/yanggyc/2022/12/26/hello-world/</a></span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E6%B5%8B%E8%AF%95%E6%A2%B3%E7%90%86/">https://guangyu-y.github.io/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E6%B5%8B%E8%AF%95%E6%A2%B3%E7%90%86/</a></span>
                     </p>
                 
                 
@@ -274,8 +285,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/"></a>
+                <a class="prev" rel="prev" href="/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/nmon/"></a>
             
+            
+            <a class="next" rel="next" href="/yanggyc/2022/12/26/%E6%B5%8B%E8%AF%95/%E6%B5%8B%E8%AF%95%E6%83%85%E5%86%B5%E8%AE%B0%E5%BD%95/"></a>
             
         </section>
 
