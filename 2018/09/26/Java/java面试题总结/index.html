@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Guangyu Yang">
+
+
+
+
+
+<title>java面试总结 | Hexo</title>
+
+
+
+    <link rel="icon" href="/yanggyc/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/yanggyc/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/yanggyc/js/script.js"></script>
+    
+    <script src="/yanggyc/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/yanggyc/">Yanggyc&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/yanggyc/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">java面试总结</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Guangyu Yang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 26, 2018&nbsp;&nbsp;12:44:48</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/yanggyc/categories/java/">java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>  <strong>1. Java Connection framework</strong></p>
+<p>​    <img src="https://note.youdao.com/yws/res/725/ABC236D366794F43AF678BC55D7A305E" alt="0"></p>
+<p><strong>2. 总结HashMap与HashTable的相关知识</strong></p>
+<p>\1. 关于HashMap的一些说法： </p>
+<p>a) HashMap实际上是一个“链表散列”的数据结构，即数组和链表的结合体。HashMap的底层结构是一个数组，数组中的每一项是一条链表。</p>
+<p>b) HashMap的实例有俩个参数影响其性能： “初始容量” 和 装填因子。 </p>
+<p>c) HashMap实现不同步，线程不安全。  HashTable线程安全 </p>
+<p>d) HashMap中的key-value都是存储在Entry中的。 </p>
+<p>e) HashMap可以存null键和null值，不保证元素的顺序恒久不变，它的底层使用的是数组和链表，通过hashCode()方法和equals方法保证键的唯一性 </p>
+<p>f) 解决冲突主要有三种方法：定址法，拉链法，再散列法。HashMap是采用拉链法解决哈希冲突的。 </p>
+<p>注： 链表法是将相同hash值的对象组成一个链表放在hash值对应的槽位；   用开放定址法解决冲突的做法是：当冲突发生时，使用某种探查(亦称探测)技术在散列表中形成一个探查(测)序列。 沿此序列逐个单元地查找，直到找到给定 的关键字，或者碰到一个开放的地址(即该地址单元为空)为止（若要插入，在探查到开放的地址，则可将待插入的新结点存人该地址单元）。  拉链法解决冲突的做法是： 将所有关键字为同义词的结点链接在同一个单链表中 。若选定的散列表长度为m，则可将散列表定义为一个由m个头指针组成的指针数 组T[0..m-1]。凡是散列地址为i的结点，均插入到以T[i]为头指针的单链表中。T中各分量的初值均应为空指针。在拉链法中，装填因子α可以大于1，但一般均取α≤1。拉链法适合未规定元素的大小。   </p>
+<p>\2. Hashtable和HashMap的区别： </p>
+<p>a)  继承不同。  public class Hashtable extends Dictionary implements Map public class HashMap extends  AbstractMap implements Map </p>
+<p>b) Hashtable中的方法是同步的，而HashMap中的方法在缺省情况下是非同步的。在多线程并发的环境下，可以直接使用Hashtable，但是要使用HashMap的话就要自己增加同步处理了。 </p>
+<p>c) Hashtable 中， key 和 value 都不允许出现 null 值。 在 HashMap 中， null 可以作为键，这样的键只有一个；可以有一个或多个键所对应的值为 null 。当 get() 方法返回 null 值时，即可以表示 HashMap 中没有该键，也可以表示该键所对应的值为 null 。因此，在 HashMap 中不能由 get() 方法来判断 HashMap 中是否存在某个键， 而应该用 containsKey() 方法来判断。 </p>
+<p>d) 两个遍历方式的内部实现上不同。Hashtable、HashMap都使用了Iterator。而由于历史原因，Hashtable还使用了Enumeration的方式 。 </p>
+<p>e) 哈希值的使用不同，HashTable直接使用对象的hashCode。而HashMap重新计算hash值。 </p>
+<p>f) Hashtable和HashMap它们两个内部实现方式的数组的初始大小和扩容的方式。HashTable中hash数组默认大小是11，增加的方式是old*2+1。HashMap中hash数组的默认大小是16，而且一定是2的指数。  </p>
+<p>注：  HashSet子类依靠hashCode()和equal()方法来区分重复元素。    HashSet内部使用Map保存数据，即将HashSet的数据作为Map的key值保存，这也是HashSet中元素不能重复的原因。而Map中保存key值的,会去判断当前Map中是否含有该Key对象，内部是先通过key的hashCode,确定有相同的hashCode之后，再通过equals方法判断是否相同。</p>
+<p>**3.**<strong>面向对象的五大基本原则</strong></p>
+<p>单一职责原则（Single-Resposibility Principle）：一个类，最好只做一件事，只有一个引起它的变化。单一职责原则可以看做是低耦合、高内聚在面向对象原则上的引申，将职责定义为引起变化的原因，以提高内聚性来减少引起变化的原因。 </p>
+<p>开放封闭原则（Open-Closed principle）：软件实体应该是可扩展的，而不可修改的。也就是，对扩展开放，对修改封闭的。 </p>
+<p>Liskov替换原则（Liskov-Substituion Principle）：子类必须能够替换其基类。这一思想体现为对继承机制的约束规范，只有子类能够替换基类时，才能保证系统在运行期内识别子类，这是保证继承复用的基础。 </p>
+<p>依赖倒置原则（Dependecy-Inversion Principle）：依赖于抽象。具体而言就是高层模块不依赖于底层模块，二者都同依赖于抽象；抽象不依赖于具体，具体依赖于抽象。 </p>
+<p>接口隔离原则（Interface-Segregation Principle）：使用多个小的专门的接口，而不要使用一个大的总接口</p>
+<p><strong>4.Map的分类以及使用方法</strong></p>
+<table>
+<thead>
+<tr>
+<th>Map类型</th>
+<th>插入是否有序</th>
+<th>顺序特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HashMap</td>
+<td>无序</td>
+<td>-</td>
+</tr>
+<tr>
+<td>LinkedHashMap</td>
+<td>有序</td>
+<td>记录插入顺序</td>
+</tr>
+<tr>
+<td>TreeMap</td>
+<td>有序</td>
+<td>默认升序</td>
+</tr>
+</tbody></table>
+<p><strong>5. 多线程中start和run的方法区别</strong></p>
+<p> 1.start方法</p>
+<p>​     用 start方法来启动线程，是真正实现了多线程， 通过调用Thread类的start()方法来启动一个线程，这时此线程处于就绪（可运行）状态，并没有运行，一旦得到cpu时间片，就开始执行run()方法。但要注意的是，此时无需</p>
+<p>等待run()方法执行完毕，即可继续执行下面的代码。所以run()方法并没有实现多线程。</p>
+<p>  2.run方法</p>
+<p>​     run()方法只是类的一个普通方法而已，如果直接调用Run方法，程序中依然只有主线程这一个线程，其程序执行路径还是只有一条，还是要顺序执行，还是要等待run方法体执行完毕后才可继续执行下面的代码。</p>
+<p><strong>6.面向对象的特征</strong></p>
+<ul>
+<li>抽象：过程抽象/数据抽象</li>
+<li>继承：原始类-&gt;派生类</li>
+<li>封装</li>
+<li>多态</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Guangyu Yang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2018/09/26/Java/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/">https://guangyu-y.github.io/yanggyc/2018/09/26/Java/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/yanggyc/tags/%E6%A6%82%E5%BF%B5/"># 概念</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/yanggyc/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/yanggyc/2018/09/26/Java/Spring%E4%BC%A0%E6%92%AD%E6%96%B9%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E5%B5%8C%E5%A5%97%E4%BD%BF%E7%94%A8/">Spring传播方式的理解与其嵌套使用</a>
+            
+            
+            <a class="next" rel="next" href="/yanggyc/2018/09/26/linux/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93%E5%A4%87%E5%BF%98/">Linux常用命令总结备忘</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
