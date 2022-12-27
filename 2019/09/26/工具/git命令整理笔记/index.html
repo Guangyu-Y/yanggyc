@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Guangyu Yang">
+
+
+
+
+
+<title>Git使用笔记 | Hexo</title>
+
+
+
+    <link rel="icon" href="/yanggyc/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/yanggyc/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/yanggyc/js/script.js"></script>
+    
+    <script src="/yanggyc/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/yanggyc/">Yanggyc&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/yanggyc/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Git使用笔记</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Guangyu Yang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 26, 2019&nbsp;&nbsp;12:44:48</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/yanggyc/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><img src=".%5Cassets%5Cimage-20221023153437402-1666510485425-31.png" alt="image-20221023153437402"></p>
+<p><strong>git clone 报错SSL connect error</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lixuande19871015/article/details/80420940">https://blog.csdn.net/lixuande19871015/article/details/80420940</a></p>
+<h3 id="全局Git配置"><a href="#全局Git配置" class="headerlink" title="全局Git配置"></a>全局Git配置</h3><ol>
+<li>查看用户名和邮箱<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name </span><br><span class="line">git config user.email</span><br></pre></td></tr></table></figure></li>
+<li>修改用户名和邮箱<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;username&quot; </span><br><span class="line">git config --global user.email &quot;email&quot;</span><br></pre></td></tr></table></figure></li>
+<li>生成SSH公钥<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -trsa -C&quot;邮箱&quot;</span><br></pre></td></tr></table></figure></li>
+<li>重置git本地密码<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --system--unsetcredential.helper</span><br></pre></td></tr></table></figure>
+<h3 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h3></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在当前目录新建一个Git代码库</span>     </span><br><span class="line">git init     </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">新建一个目录，将其初始化为Git代码库 git init [project-name]</span>     </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载一个项目和它的整个代码历史</span>     </span><br><span class="line">git clone [url]    </span><br></pre></td></tr></table></figure>
+
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><ol>
+<li>查看远程分支</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用如下命令查看所有远程分支： git fetch git branch -r</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>拉取远程分支并创建本地分支<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">- 方法一</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用如下命令：</span> </span><br><span class="line">git checkout -b 本地分支branch_x origin/远程分支名name </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用该方式会在本地新建分支branch_x，并自动切换到该本地分支branch_x。</span></span><br><span class="line">    </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">- 方式二</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用如下命令：</span> </span><br><span class="line">git fetch origin 远程分支名name:本地分支branch_x </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用该方式会在本地新建分支branch_x，但是不会自动切换到该本地分支branch_x，需要手动checkout。</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
+
+<h3 id="分支文件对比"><a href="#分支文件对比" class="headerlink" title="分支文件对比"></a>分支文件对比</h3><ol>
+<li>显示出branch1和branch2中差异的部分<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff branch1 branch2 --stat</span><br></pre></td></tr></table></figure></li>
+<li>显示指定文件的详细差异<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff branch1 branch2 具体文件路径</span><br></pre></td></tr></table></figure></li>
+<li>显示出所有有差异的文件的详细差异<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff branch1 branch2</span><br></pre></td></tr></table></figure></li>
+<li>查看branch1分支有，而branch2中没有的log<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log branch1 ^branch2</span><br></pre></td></tr></table></figure></li>
+<li>查看branch2中比branch1中多提交了哪些内容<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log branch1..branch2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>注意，列出来的是两个点后边（此处即dev）多提交的内容。</strong></p>
+<ol start="6">
+<li>不知道谁提交的多谁提交的少，单纯想知道有什么不一样<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log branch1...branch2</span><br></pre></td></tr></table></figure></li>
+<li>在上述情况下，在显示出每个提交是在哪个分支上<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -lefg-right branch1...branch2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>注意 commit 后面的箭头，根据我们在 –left-right branch1…branch2 的顺序，左箭头 &lt; 表示是 branch1 的，右箭头 &gt; 表示是branch2的。</strong></p>
+<h3 id="文件撤销操作"><a href="#文件撤销操作" class="headerlink" title="文件撤销操作"></a>文件撤销操作</h3><ol>
+<li>未使用 git add 缓存代码时</li>
+</ol>
+<blockquote>
+<p>可以使用 git checkout – filepathname (比如： git checkout – readme.md ，不要忘记中间的 “–” ，不写就成了检出分支了！！)。放弃所有的文件修改可以使用 git checkout . 命令。此命令用来放弃掉所有还没有加入到缓存区（就是 git add 命令）的修改：内容修改与整个文件删除。但是此命令不会删除掉刚新建的文件。因为刚新建的文件还没已有加入到 git 的管理系统中。所以对于git是未知的。自己手动删除就好了。</p>
+</blockquote>
+<ol start="2">
+<li>已经使用了 git add 缓存了代码</li>
+</ol>
+<blockquote>
+<p>可以使用 git reset HEAD filepathname （比如： git reset HEAD readme.md）来放弃指定文件的缓存，放弃所以的缓存可以使用 git reset HEAD . 命令。</p>
+</blockquote>
+<blockquote>
+<p>此命令用来清除 git 对于文件修改的缓存。相当于撤销 git add 命令所在的工作。在使用本命令后，本地的修改并不会消失，而是回到了如（一）所示的状态。继续用（一）中的操作，就可以放弃本地的修改。 </p>
+</blockquote>
+<ol start="3">
+<li>已经用 git commit 提交了代码</li>
+</ol>
+<blockquote>
+<p>可以使用 git reset –hard HEAD^ 来回退到上一次commit的状态。此命令可以用来回退到任意版本：git reset –hard commitid</p>
+</blockquote>
+<blockquote>
+<p>git log 可以查看请交历史记录 </p>
+</blockquote>
+<h3 id="cherry-pick"><a href="#cherry-pick" class="headerlink" title="cherry-pick"></a>cherry-pick</h3><p>使用场景：对于多分支的代码库，将代码从一个分支转移到另一个分支是常见需求。<br>这时分两种情况。一种情况是，你需要另一个分支的所有代码变动，那么就采用合并（git merge）。另一种情况是，你只需要部分代码变动（某几个提交），这时可以采用 Cherry pick。</p>
+<h3 id="Git提交规范"><a href="#Git提交规范" class="headerlink" title="Git提交规范"></a>Git提交规范</h3><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html">https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html</a></p>
+<h3 id="Git同机器配置多个Git账户，做到公私分离"><a href="#Git同机器配置多个Git账户，做到公私分离" class="headerlink" title="Git同机器配置多个Git账户，做到公私分离"></a>Git同机器配置多个Git账户，做到公私分离</h3><ol>
+<li><p>生成账户1的公钥：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -trsa -C&quot;zhangsan@email.com&quot; </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成过程中记得给ssh公钥文件起个名字，如：id_rsa1</span></span><br></pre></td></tr></table></figure></li>
+<li><p>将ssh key添加到SSH agent中，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa1</span><br></pre></td></tr></table></figure></li>
+<li><p>生成账户2的公钥：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -trsa -C&quot;lisi@qq.com&quot; </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成过程中记得给ssh公钥文件起个名字，如：id_rsa2</span></span><br></pre></td></tr></table></figure></li>
+<li><p>将ssh key添加到SSH agent中，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa2</span><br></pre></td></tr></table></figure></li>
+<li><p>配置ssh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.ssh/config </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置如下内容：</span> </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">粘贴到config文件中</span> </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">公司的git地址</span> </span><br><span class="line">Host git.***.com </span><br><span class="line">User git </span><br><span class="line">Hostname git.***.com  #公司的git地址 </span><br><span class="line">IdentityFile ~/.ssh/id_rsa1  #访问公司git的SSH KEY </span><br><span class="line">Port   ***  #公司的git端口 </span><br><span class="line">Host gitee.com </span><br><span class="line">User git </span><br><span class="line">Hostname gitee.com #github的地址 </span><br><span class="line">IdentityFile ~/.ssh/id_rsa2  #访问github的SSH KEY</span><br></pre></td></tr></table></figure>
+<h3 id="问题记录："><a href="#问题记录：" class="headerlink" title="问题记录："></a>问题记录：</h3></li>
+<li><p>执行**<strong>git命令时提示秘钥权限太开放Permissions 0644 for ‘/Users/liuml/.ssh/id_rsa_tz’ are too open.</strong> **错误信息如下：</p>
+<blockquote>
+<p>Update failed<br>Warning: Permanently added ‘<a target="_blank" rel="noopener" href="http://gitee.com/">gitee.com</a>,<em><strong>.</strong></em>.***.**’ (ECDSA) to the list of known hosts.<br>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>@     WARNING: UNPROTECTED PRIVATE KEY FILE!     @<br>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>Permissions 0644 for ‘/home/lisi/.ssh/id_rsa_tz’ are too open.<br>It is required that your private key files are NOT accessible by others.<br>This private key will be ignored.<br>Load key “/home/lisi/.ssh/id_rsa_tz”: bad permissions<br><a href="mailto:git@gitee.com">git@gitee.com</a>: Permission denied (publickey).<br>Could not read from remote repository.<br>Please make sure you have the correct access rights<br>and the repository exists.</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>解决方式</strong>：<br>可以执行以下命令将秘钥文件的权限设置为700。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 700 ~/.ssh/config ~/.ssh/id_rsa_*</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>git****客户端 提示Load key “/home/xxx/.ssh/id_rsa.pub”: invalid format</strong>    </li>
+</ol>
+<p> <strong>解决方式</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.ssh.config  </span><br><span class="line">Host x.x.x.x </span><br><span class="line">User git </span><br><span class="line">IdentityFile /home/xxx/.ssh/id_rsa1 # 此处没有.pub </span><br><span class="line">IdentitiesOnly yes</span><br></pre></td></tr></table></figure>
+<p><strong>Git常用命令笔记</strong></p>
+<p>转载地： <a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html</a></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Guangyu Yang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2019/09/26/%E5%B7%A5%E5%85%B7/git%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86%E7%AC%94%E8%AE%B0/">https://guangyu-y.github.io/yanggyc/2019/09/26/%E5%B7%A5%E5%85%B7/git%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86%E7%AC%94%E8%AE%B0/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/yanggyc/tags/%E5%A4%87%E5%BF%98/"># 备忘</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/yanggyc/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/yanggyc/2019/09/26/%E5%B7%A5%E5%85%B7/docker%E5%AD%A6%E4%B9%A0/">Docker学习</a>
+            
+            
+            <a class="next" rel="next" href="/yanggyc/2019/09/26/%E5%B7%A5%E5%85%B7/markdown%E8%AF%AD%E6%B3%95/">markdown基本语法一览</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

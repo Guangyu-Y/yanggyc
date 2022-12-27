@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Guangyu Yang">
+
+
+
+
+
+<title>vim配置 | Hexo</title>
+
+
+
+    <link rel="icon" href="/yanggyc/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/yanggyc/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/yanggyc/js/script.js"></script>
+    
+    <script src="/yanggyc/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/yanggyc/">Yanggyc&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/yanggyc/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">vim配置</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Guangyu Yang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 26, 2019&nbsp;&nbsp;12:44:48</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/yanggyc/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>安装插件管理工具：<a target="_blank" rel="noopener" href="https://github.com/VundleVim/Vundle.vim">https://github.com/VundleVim/Vundle.vim</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;基本设置&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">filetype on &quot;开启文件类型侦测</span><br><span class="line">filetype indent on  &quot;适应不同语言的缩进</span><br><span class="line">syntax enable   &quot;开启语法高亮功能</span><br><span class="line">syntax on   &quot;允许使用用户配色</span><br><span class="line">filetype plugin on</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;显示设置&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">set laststatus=2            &quot;总是显示状态栏</span><br><span class="line">set ruler                   &quot;显示光标位置</span><br><span class="line">set number                  &quot;显示行号</span><br><span class="line">&quot;set cursorline             &quot;高亮显示当前行</span><br><span class="line">&quot;s:w</span><br><span class="line">&quot;et cursorcolumn            &quot;高亮显示当前列</span><br><span class="line">set hlsearch                &quot; 高亮搜索结果</span><br><span class="line">exec &quot;nohlsearch&quot;</span><br><span class="line">&quot;set incsearch               &quot;边输边高亮</span><br><span class="line">set ignorecase              &quot;搜索时忽略大小写</span><br><span class="line">set smartcase</span><br><span class="line"></span><br><span class="line">set backspace=2</span><br><span class="line"></span><br><span class="line">&quot; set relativenumber          &quot;其他行显示相对行号</span><br><span class="line">&quot;set scrolloff=5            &quot;垂直滚动时光标距底部位置</span><br><span class="line">set mouse=a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;编码设置&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">set fileencodings=utf-8,gb2312,gbk,gb18030,cp936    &quot; 检测文件编码,将fileencoding设置为最终编码</span><br><span class="line">set fileencoding=utf-8                              &quot; 保存时的文件编码</span><br><span class="line">set termencoding=utf-8                              &quot; 终端的输出字符编码</span><br><span class="line">set encoding=utf-8                                  &quot; VIM打开文件使用的内部编码</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;编辑设置&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">set expandtab       &quot;扩展制表符为空格</span><br><span class="line">set tabstop=4       &quot;制表符占空格数</span><br><span class="line">set softtabstop=4   &quot;将连续数量的空格视为一个制表符</span><br><span class="line">set shiftwidth=4    &quot;自动缩进所使用的空格数</span><br><span class="line">&quot;set textwidth=79   &quot;编辑器每行字符数</span><br><span class="line">set wrap            &quot;设置自动折行</span><br><span class="line">set linebreak       &quot;防止单词内部折行</span><br><span class="line">set wrapmargin=5      &quot;指定折行处与右边缘空格数</span><br><span class="line">set autoindent      &quot;打开自动缩进</span><br><span class="line">set wildmenu        &quot;vim命令自动补全</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;按键映射(just for colemak user)&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot;      ^</span><br><span class="line">&quot;      u</span><br><span class="line">&quot; &lt; n     i &gt;</span><br><span class="line">&quot;      e</span><br><span class="line">&quot;      v</span><br><span class="line">&quot;插入模式下的退出键</span><br><span class="line">noremap tt &lt;Esc&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; 跳至行首/行尾</span><br><span class="line">&quot;noremap &lt;C-n&gt; 0</span><br><span class="line">&quot;noremap &lt;C-i&gt; $</span><br><span class="line">&quot;noremap k i</span><br><span class="line">&quot;noremap K I</span><br><span class="line">&quot;noremap l u</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;插件设置&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">set nocompatible    &quot;关闭兼容模式</span><br><span class="line">filetype off    &quot;文件类型侦测关闭</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">call plug<span class="comment">#begin(&#x27;~/.vim/plugged&#x27;)</span></span></span><br><span class="line">set rtp+=~/.vim/bundle/Vundle.vim</span><br><span class="line">call vundle#begin()</span><br><span class="line">&quot;需要配置的插件都放在begin和end之间</span><br><span class="line"></span><br><span class="line">Plugin &#x27;scrooloose/nerdcommenter&#x27; &quot;多行注释</span><br><span class="line">Plugrn &#x27;jiangmiao/auto-pairs&#x27;     &quot;括号、引号自动补全</span><br><span class="line">&quot;Plug &#x27;ycm-core/YouCompleteMe&#x27;   &quot;代码补全</span><br><span class="line">Plugin &#x27;scrooloose/nerdtree&#x27;  &quot;树形目录</span><br><span class="line">Plugin &#x27;Yggdroot/indentLine&#x27;      &quot;自动缩进插件</span><br><span class="line">Plugin &#x27;vim-airline/vim-airline&#x27;  &quot;状态栏主题</span><br><span class="line">Plugin &#x27;vim-scripts/Solarized&#x27;    &quot;主题</span><br><span class="line">Plugin &#x27;honza/vim-snippets&#x27;       &quot;代码片段补全</span><br><span class="line">Plugin &#x27;vim-autoformat/vim-autoformat&#x27;</span><br><span class="line"></span><br><span class="line">&quot;Plug &#x27;mhinz/vim-startify&#x27;         &quot;vim开始界面最近文件</span><br><span class="line">&quot;Plug &#x27;connorholyday/vim-snazzy&#x27;   &quot;主题方案</span><br><span class="line">&quot;Plug &#x27;tpope/vim-commentary&#x27;       &quot;代码注释</span><br><span class="line">&quot;Plug &#x27;ryanoasis/vim-devicons&#x27;     &quot;文件图标</span><br><span class="line">&quot;Plug &#x27;Lokaltog/vim-powerline&#x27;     &quot;状态栏主题</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">call plug<span class="comment">#end()</span></span></span><br><span class="line">call vundle#end()</span><br><span class="line">filetype plugin indent on</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;快捷键&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">noremap &lt;F3&gt; :Autoformat&lt;CR&gt;</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot;solarized</span><br><span class="line">set background=dark</span><br><span class="line">colorscheme solarized   &quot;素雅</span><br><span class="line">hi Normal ctermbg=none &quot;设置背景透明</span><br><span class="line"></span><br><span class="line">let g:pydiction_location = &#x27;~/.vim/tools/pydiction/complete-dict&#x27;</span><br><span class="line"></span><br><span class="line">&quot;vim-airline</span><br><span class="line">let g:airline_powerline_fonts=1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;Lokaltog</span><br><span class="line">&quot;let g:Powerline_colorscheme=&#x27;solarized256&#x27;  &quot;设置状态栏主题风格</span><br><span class="line"></span><br><span class="line">&quot;nerdtree</span><br><span class="line">&quot;autocmd vimenter * NERDTree</span><br><span class="line">let NERDTreeWinSize=30</span><br><span class="line">let NERDTreeWinPos=&quot;left&quot;</span><br><span class="line"></span><br><span class="line">&quot; 文件树设置 &#123;&#123;&#123;</span><br><span class="line">&quot; 关闭NERDTree快捷键</span><br><span class="line">map &lt;leader&gt;t :NERDTreeToggle&lt;CR&gt;</span><br><span class="line">&quot; &quot;&quot;当NERDTree为剩下的唯一窗口时自动关闭</span><br><span class="line">autocmd bufenter * if (winnr(&quot;$&quot;) == 1 &amp;&amp; exists(&quot;b:NERDTree&quot;) &amp;&amp; b:NERDTree.isTabTree()) | q | endif</span><br><span class="line">&quot; &quot;&quot;修改树的显示图标</span><br><span class="line">let g:NERDTreeDirArrowExpandable = &#x27;►&#x27;</span><br><span class="line">let g:NERDTreeDirArrowCollapsible = &#x27;▼&#x27;</span><br><span class="line">let NERDTreeAutoCenter=1</span><br><span class="line">&quot; 显示行号</span><br><span class="line">let NERDTreeShowLineNumbers=1</span><br><span class="line">&quot; 是否显示隐藏文件</span><br><span class="line">let NERDTreeShowHidden=1</span><br><span class="line">&quot; 设置宽度</span><br><span class="line">let NERDTreeWinSize=25</span><br><span class="line">&quot; 在终端启动vim时，共享NERDTree</span><br><span class="line">let g:nerdtree_tabs_open_on_console_startup=1</span><br><span class="line">&quot; 忽略一下文件的显示</span><br><span class="line">let NERDTreeIgnore=[&#x27;\.pyc&#x27;,&#x27;\~$&#x27;,&#x27;\.swp&#x27;]</span><br><span class="line">let g:NERDTreeIndicatorMapCustom = &#123;</span><br><span class="line">    \ &quot;Modified&quot;  : &quot;✹&quot;,</span><br><span class="line">    \ &quot;Staged&quot;    : &quot;✚&quot;,</span><br><span class="line">    \ &quot;Untracked&quot; : &quot;✭&quot;,</span><br><span class="line">    \ &quot;Renamed&quot;   : &quot;➜&quot;,</span><br><span class="line">    \ &quot;Unmerged&quot;  : &quot;═&quot;,</span><br><span class="line">    \ &quot;Deleted&quot;   : &quot;✖&quot;,</span><br><span class="line">    \ &quot;Dirty&quot;     : &quot;✗&quot;,</span><br><span class="line">    \ &quot;Clean&quot;     : &quot;✔︎&quot;,</span><br><span class="line">    \ &#x27;Ignored&#x27;   : &#x27;☒&#x27;,</span><br><span class="line">    \ &quot;Unknown&quot;   : &quot;?&quot;</span><br><span class="line">    \ &#125;</span><br><span class="line">&quot; &#125;&#125;&#125;</span><br><span class="line"></span><br><span class="line">&quot;indentLine</span><br><span class="line">&quot; let g:indentLine_char=&#x27;┆&#x27;       &quot;缩进指示线符</span><br><span class="line">&quot; let g:indentLine_enabled = 1    &quot;开启缩进指示</span><br><span class="line"></span><br><span class="line">&quot;YouCompleteMe</span><br><span class="line">let g:ycm_global_ycm_extra_conf=&#x27;~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py&#x27;</span><br><span class="line">&quot;let g:ycm_server_python_interpreter=&#x27;/usr/bin/python&#x27;</span><br><span class="line">&quot;let g:ycm_semantic_triggers =  &#123;</span><br><span class="line">&quot;  \   &#x27;c&#x27; : [&#x27;-&gt;&#x27;, &#x27;.&#x27;],</span><br><span class="line">&quot;  \   &#x27;objc&#x27; : [&#x27;-&gt;&#x27;, &#x27;.&#x27;, &#x27;re!\[[_a-zA-Z]+\w*\s&#x27;, &#x27;re!^\s*[^\W\d]\w*\s&#x27;,</span><br><span class="line">&quot;  \             &#x27;re!\[.*\]\s&#x27;],</span><br><span class="line">&quot;  \   &#x27;ocaml&#x27; : [&#x27;.&#x27;, &#x27;#&#x27;],</span><br><span class="line">&quot;  \   &#x27;cpp,objcpp&#x27; : [&#x27;-&gt;&#x27;, &#x27;.&#x27;, &#x27;::&#x27;],</span><br><span class="line">&quot;  \   &#x27;perl&#x27; : [&#x27;-&gt;&#x27;],</span><br><span class="line">&quot;  \   &#x27;php&#x27; : [&#x27;-&gt;&#x27;, &#x27;::&#x27;],</span><br><span class="line">&quot;  \   &#x27;cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go&#x27; : [&#x27;.&#x27;],</span><br><span class="line">&quot;  \   &#x27;ruby&#x27; : [&#x27;.&#x27;, &#x27;::&#x27;],</span><br><span class="line">&quot;  \   &#x27;lua&#x27; : [&#x27;.&#x27;, &#x27;:&#x27;],</span><br><span class="line">&quot;  \   &#x27;erlang&#x27; : [&#x27;:&#x27;],</span><br><span class="line">&quot;  \   &#x27;c,cpp,python,java,go,erlang,perl&#x27;: [&#x27;re!\w&#123;2&#125;&#x27;],</span><br><span class="line">&quot;  \   &#x27;cs,lua,javascript&#x27;: [&#x27;re!\w&#123;2&#125;&#x27;],</span><br><span class="line">&quot;  \ &#125;</span><br><span class="line">&quot;set completeopt=menu,menuone</span><br><span class="line">&quot;let g:ycm_add_preview_to_completeopt = 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;Snippet</span><br><span class="line">&quot;let g:UltiSnipsSnippetDirectories=[$HOME.&#x27;/.vim/plugged/vim-snippets/UltiSnips&#x27;]</span><br><span class="line">&quot;let g:UltiSnipsExpandTrigger = &quot;&lt;tab&gt;&quot;</span><br><span class="line">&quot;let g:UltiSnipsListSnippets = &quot;&lt;c-tab&gt;&quot;</span><br><span class="line">&quot;let g:UltiSnipsJumpForwardTrigger = &quot;&lt;tab&gt;&quot;</span><br><span class="line">&quot;let g:UltiSnipsJumpBackwardTrigger = &quot;&lt;s-tab&gt;&quot;</span><br><span class="line">&quot;let g:UltiSnipsEditSplit=&quot;vertical&quot;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Guangyu Yang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2019/09/26/%E5%B7%A5%E5%85%B7/vim%E9%85%8D%E7%BD%AE/">https://guangyu-y.github.io/yanggyc/2019/09/26/%E5%B7%A5%E5%85%B7/vim%E9%85%8D%E7%BD%AE/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/yanggyc/tags/%E5%A4%87%E5%BF%98/"># 备忘</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/yanggyc/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/yanggyc/2019/09/26/%E5%B7%A5%E5%85%B7/ubuntu%E5%AE%89%E8%A3%85docker/">ubuntu安装docker</a>
+            
+            
+            <a class="next" rel="next" href="/yanggyc/2019/09/26/%E5%B7%A5%E5%85%B7/wsl%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">wsl使用问题整理</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

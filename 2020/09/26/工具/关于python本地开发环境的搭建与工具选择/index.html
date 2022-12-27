@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Guangyu Yang">
+
+
+
+
+
+<title>python开发环境搭建 | Hexo</title>
+
+
+
+    <link rel="icon" href="/yanggyc/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/yanggyc/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/yanggyc/js/script.js"></script>
+    
+    <script src="/yanggyc/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/yanggyc/">Yanggyc&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/yanggyc/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">python开发环境搭建</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Guangyu Yang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 26, 2020&nbsp;&nbsp;12:44:48</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/yanggyc/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h3><h4 id="代码编辑"><a href="#代码编辑" class="headerlink" title="代码编辑"></a>代码编辑</h4><ul>
+<li><p><strong>pycharm</strong></p>
+<ul>
+<li><p>优点：除了生孩子，其他都能干。</p>
+</li>
+<li><p>缺点：比较重，打开后内存占用比较高；社区版功能少，专业版贵。</p>
+</li>
+</ul>
+</li>
+<li><p>vim</p>
+<ul>
+<li>优点：轻量化；高效；可一个配置，多机使用；</li>
+<li>缺点：学习成本高，需要一定的适应时间。有些好用的插件安装比较繁琐。</li>
+</ul>
+</li>
+<li><p>vscode</p>
+<ul>
+<li>优点：比较轻量，插件支持丰富，需要的功能基本都有。</li>
+<li>缺点：</li>
+</ul>
+</li>
+</ul>
+<h4 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h4><ul>
+<li><strong>GIT</strong></li>
+</ul>
+<h3 id="python版本管理"><a href="#python版本管理" class="headerlink" title="python版本管理"></a>python版本管理</h3><ul>
+<li>pyenv【linux推荐】<ul>
+<li>优点：</li>
+<li>缺点：</li>
+</ul>
+</li>
+<li>miniconda【windows推荐】<ul>
+<li>优点：</li>
+<li>缺点：</li>
+</ul>
+</li>
+</ul>
+<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><ul>
+<li><strong>WindowsTermianl</strong><ul>
+<li>优点：</li>
+<li>缺点：</li>
+</ul>
+</li>
+<li>cmder<ul>
+<li>优点：</li>
+<li>缺点：</li>
+</ul>
+</li>
+<li>MobaShell<ul>
+<li>优点：</li>
+<li>缺点：</li>
+</ul>
+</li>
+</ul>
+<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><h4 id="方案1：本地开发"><a href="#方案1：本地开发" class="headerlink" title="方案1：本地开发"></a>方案1：本地开发</h4><p>如果仅需要做本地的简单脚本开发，比较好用的还是vscode。可以直接创建脚本，编辑运行即可，不需要像pycharm那样占用过多的系统内存。</p>
+<p>如果是工程类型的项目，外部包依赖较多的情况下，如果项目的运行环境是windows，则可以在本地使用pycharm开发，因为pycharm在代码调试、依赖包源码查看等开发体验上有比较不错的表现，可能唯一的缺点就是打开后占用系统资源比较高；如果项目运行环境是linux系统，也可在本地进行开发，但是开发环境和运行环境是异构的，可能会导致有些开源依赖包的使用方式在windows和linux有所不同，进而导致在联调过程中进行反工。因此当项目的运行环境是linux时，建议采用远程开发。见方案二、三。</p>
+<h4 id="方案2：远程开发"><a href="#方案2：远程开发" class="headerlink" title="方案2：远程开发"></a>方案2：远程开发</h4><ol>
+<li><strong>VSCode远程开发。</strong>当ssh连接远程服务器不需要跳板机时，可直接采用vscode，配置远程目录，进行远程开发。开发过程中可以实时保存至远程服务器代码目录，并进行运行，但是比较依赖网络的稳定性，网络不稳定的情况下，可能会在保存的过程中卡住。另一个挑战就是代码版本控制方面，需要使用GIT命令做相应操作，故需要开发任务有比较扎实的git知识。也可使用vscode的git插件。</li>
+<li><strong>VIM开发。</strong>个人建议这种方式只开发简单脚本，复杂的工程开发，还是有一定的学习成本。</li>
+<li><strong>Pycharm使用远程Python运行项目。</strong>在windows本地做代码开发，在pycharm中配置python解释器的时候，配置linux服务器上的python环境，可做到本地开发，使用远程环境运行的效果。但是如果你登录远程环境得通过跳板机，这种方式就比较复杂了，需要配置网络代理。不建议这么做，因为可能会被公司安全部谈话。此时建议在windows安装wsl，使用wsl的python配置解释器。</li>
+<li><strong>Pycharm同步远程代码。</strong>建议在不需要跳板机连接的linux机器上或者本地wsl中开发代码，pycharm tools deployment中配置远程目录，设置本地代码与远程代码的同步目录，可选择使用sftp、rsync进行两个路径的代码同步，也可以直接打开远程的代码进行编辑、保存。如果本地内存不够的情况下，可直接使用vim做简单开发，集成调试时，使用pycharm。</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Guangyu Yang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2020/09/26/%E5%B7%A5%E5%85%B7/%E5%85%B3%E4%BA%8Epython%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%B7%A5%E5%85%B7%E9%80%89%E6%8B%A9/">https://guangyu-y.github.io/yanggyc/2020/09/26/%E5%B7%A5%E5%85%B7/%E5%85%B3%E4%BA%8Epython%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%B7%A5%E5%85%B7%E9%80%89%E6%8B%A9/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/yanggyc/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"># 环境搭建</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/yanggyc/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/yanggyc/2021/09/26/%E6%B5%8B%E8%AF%95/mysql-test/">mysql测试整理</a>
+            
+            
+            <a class="next" rel="next" href="/yanggyc/2020/09/26/%E5%B7%A5%E5%85%B7/%E9%98%BF%E9%87%8C%E4%BA%91%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/">阿里云远程服务器（CentOs）配置与部署应用</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

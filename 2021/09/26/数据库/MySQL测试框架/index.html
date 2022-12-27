@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Guangyu Yang">
+
+
+
+
+
+<title>Mysql数据库测试框架整理 | Hexo</title>
+
+
+
+    <link rel="icon" href="/yanggyc/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/yanggyc/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/yanggyc/js/script.js"></script>
+    
+    <script src="/yanggyc/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/yanggyc/">Yanggyc&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/yanggyc/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Mysql数据库测试框架整理</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Guangyu Yang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 26, 2021&nbsp;&nbsp;12:44:48</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/yanggyc/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="测试案例可能失败的几种方式"><a href="#测试案例可能失败的几种方式" class="headerlink" title="测试案例可能失败的几种方式"></a>测试案例可能失败的几种方式</h3><ul>
+<li>SQL执行结果的result code与期望的不一致。</li>
+<li>测试文件中预期的错误没有出现。</li>
+<li>产生了错误的输出。与../r/目录下的预期结果进行对比，如果期望的结果与真实的结果不同，则将真实的测试结果写到mysql-test/var/log目录下，以testname.reject命名。</li>
+<li>在测试过程中，MySQL服务器意外宕机，测试用例将失败。在这种情况下，mysqltest测试客户端通常也会报告由于连接丢失而导致的失败。</li>
+<li>在案例测试期间，错误日志和警告没有被过滤，则会导致案例测试失败。</li>
+</ul>
+<h3 id="mysql测试框架的组成部分"><a href="#mysql测试框架的组成部分" class="headerlink" title="mysql测试框架的组成部分"></a>mysql测试框架的组成部分</h3><h4 id="测试框架程序"><a href="#测试框架程序" class="headerlink" title="测试框架程序"></a>测试框架程序</h4><ul>
+<li> Perl脚本mysql-test-run.pl是运行测试的主要程序，它调用MySQLtest来运行各个测试用例。</li>
+<li> mysqltest运行测试用例。</li>
+<li> mysql_client_test程序用于测试MySQL客户端API的一些方面，这些方面不能使用mysqltest及其测试语言进行测试。</li>
+<li> Perl脚本mysql-stress-test.pl用于mysql服务器的压力测试。</li>
+<li> 提供了一个单元测试工具，以便为存储引擎和插件创建单独的单元测试程序。</li>
+</ul>
+<h4 id="测试套件程序的存放位置"><a href="#测试套件程序的存放位置" class="headerlink" title="测试套件程序的存放位置"></a>测试套件程序的存放位置</h4><ul>
+<li>对于源发行版，mysqltest在客户端目录中。对于二进制发行版，它位于MySQL bin目录中。</li>
+<li>对于源发行版，mysql_client_test位于tests目录中。对于二进制发行版，它位于MySQL bin目录中。</li>
+<li>其他程序位于mysql-test目录中。对于发行版，可以在根目录下找到mysql-test。对于二进制发行版，mysql-test的位置取决于发行版格式使用的布局。</li>
+</ul>
+<h4 id="测试框架目录和文件"><a href="#测试框架目录和文件" class="headerlink" title="测试框架目录和文件"></a>测试框架目录和文件</h4><p>测试套件位于mysql-test目录中，其中包含以下组件:</p>
+<ul>
+<li><p>用于测试的程序mysql-test-run.pl和mysql-stress-test.pl。   </p>
+</li>
+<li><p>t目录包含测试用例输入文件。测试用例文件还可能有与之关联的其他文件。</p>
+<ul>
+<li>命名为testname.test的测试案例文件，是一个名为testname的用例文件。例如subtest.test是名为subtest的测试用例文件。</li>
+<li>名为test_name-master.opt提供了与指定测试用例相关联的选项。如果选项与当前运行的服务器所需的选项不同，脚本mysql-test-run.pl将用文件中给出的配置选项重启服务器- 请注意-master.opt文件用于测试的主服务器，即使不涉及主从复制。</li>
+<li>文件test_name-slave.opt提供从选项。</li>
+<li>在服务器初始化期间需要传递的服务器选项可以在test_name-master.pl和test_name-slave.pl中传递。必须将每个引导变量作为-bootstrap选项的值传递，以便mysql-test.pl能够识别在服务器初始化期间应该使用该变量，删除现有的数据目录，并使用提供的选项初始化一个新的数据目录。mysql-test-run.pl还将在之后启动服务器，并指定引导选项和其他选项。</li>
+<li>命名格式为test_name-client.opt的文件提供了mysqltest客户端选项。</li>
+<li>命名格式为test_name.cnf的文件包含用于此测试的配置文件的附加项。<ul>
+<li>在测试运行期间。每个服务器都使用不同的default -group-suffix值启动，该后缀值可以与组名称一起使用，以指定服务器的特定选项。例如[mysqld.1]以后缀.1来指定mysql服务器的特殊选项。</li>
+<li>[mysqltest]部分用于为mysqltest客户端指定选项。</li>
+<li>[ENV]部分用于为测试用例指定环境变量。</li>
+<li>要包含另一个.cnf文件中提到的选项，使用!include path_to_cnf_file。包含的.cnf的路径应该是当前位置或mysql-test目录的绝对路径或相对路径。<br>如下是一个.cnf的实例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">!include include/default_my.cnf</span><br><span class="line"></span><br><span class="line">[mysqld.1]</span><br><span class="line">Options for server mysqld.1</span><br><span class="line"></span><br><span class="line">[mysqld.2]</span><br><span class="line">Options for server mysqld.2</span><br><span class="line"></span><br><span class="line">[mysqltest]</span><br><span class="line">ps-protocol</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">[ENV]</span><br><span class="line">SERVER_MYPORT_1= @mysqld.1.port</span><br><span class="line">SERVER_MYPORT_2= @mysqld.2.port</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>命名格式为suite.opt的文件为其所属套件中的所有测试提供服务器选项。<br>如果一个测试运行由多个服务器启动，那么所有服务器都将使用suite.opt中指定的选项。还可以在suite.opt文件中传递服务器初始化期间所需要的服务器选项。<br>suite.opt文件中提及到的选项将会被test_name-master.opt或test_name-slave.opt文件中的选项覆盖。</li>
+<li>命名格式为test_name-master.sh的文件名是一个shell脚本，它将在服务器启动之前为命名的测试用例执行。还可能有一个test_name-slave.sh,它在从服务器启动之前执行。   这些文件不能再windows上工作，因此可能在将来被一种更有可移植性的机制所替代。</li>
+<li>disabled.def文件包含关于延迟/禁用测试的信息。当一个测试由于服务器中的一个错误而失败，并且您希望它被 mysql-test-run.pl忽略时，在这个文件中列出这些测试案例。<br>disabled.def文件中的行格式如下所示，其中字段由一个或多个空格分隔。  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">suite_name.test_name : BUG#nnnnn YYYY-MM-DD disabler comment</span><br></pre></td></tr></table></figure>
+  例如：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpl.rpl_row_blob_innodb : BUG#18980 2006-04-10 kent Test fails randomly</span><br></pre></td></tr></table></figure>
+suite_name:测试套件名。test_name:测试案例名。BUG#nnnnn:指示失败的与测试相关的错误(因此需要禁用它)。disable:是禁用测试的人的名称。comment通常提供禁用测试的原因。<br>冒号后面的文本不是这个文件的强制语法的一部分；mysql-test-run.pl实际上并不关心这里写的是什么。这只是一个推荐的标准。</li>
+</ul>
+<p>  在测试名称后面和冒号前面添加一个额外的元素，您可以添加一个@platform,以便仅在特定的平台上禁用测试。基本的操作系统名称在Perl中根据$^O，或支持”windows”。另外，@!platform将禁用除指定平台之外的所有平台上的测试。</p>
+<p>  可以在文件中以”#”字符开头编写注释行。</p>
+</li>
+<li><p>r目录包含测试用例结果文件</p>
+<ul>
+<li>一个命名格式为test_name.result是相应命名测试案例的预期结果。一个命名为r/test_name.result的文件是与测试用例文件t/test_name.test中的输入相对应的输出。</li>
+<li>命名格式为test_name.reject的文件包含的是由于测试结果与预期不匹配的结果输出。<br>对于成功的测试案例，.result文件表示预期结果和实际结果。对于失败的测试案例，.result文件表示预期的结果，.reject文件表示实际的结果。</li>
+</ul>
+<p>  如果由于测试失败而创建.reject文件，那么在下一次测试成功时，mysql-test-run.pl将删除该文件。</p>
+<p>  当–check-testcases选项被启用时，一个没有对应的.result文件的测试用例被MTR标记为failed。具体看mysql-test-run.pl。</p>
+</li>
+<li><p>  include目录包含源命令的测试用例文件包含的文件。这些文件将不同复杂性的操作封装到一个文件中，这样就可以在单个步骤中执行这些操作。</p>
+</li>
+<li><p>lib目录包含mysql-test-run.pl使用的库文件和数据库初始化SQL代码。</p>
+</li>
+<li><p>std_data目录包含一些测试使用的数据文件。</p>
+</li>
+<li><p>var目录在测试运行期间的各种文件：测试期间启动的服务器日志、临时文件、跟踪文件、Unix套接字文件，等等。此目录不能由同步测试运行共享。</p>
+</li>
+<li><p>suite目录包含一组包含命名测试套件的子目录，每个子目录表示具有相同名称的测试套件。<br>一个测试套件目录包含以下组件：</p>
+<ul>
+<li>t目录包含测试案例。</li>
+<li>r目录包含测试文件的结果文件。</li>
+<li>include目录包含属于该套件的测试用例包含的文件。</li>
+<li>文件名combinations为每个测试运行提供选项部分。</li>
+<li>文件my.cnf包含配置文件的附加条目，该配置文件用于它所属套件中的所有测试。<br>套件特定的my.cnf文件被test_name.cnf文件覆盖。</li>
+</ul>
+</li>
+<li><p>collections目录包含了在MySQL集成和发布测试期间运行的测试的集合。他们在此上下文中不是直接有用的，但是需要成为源存储库的一部分，并包含在其中以供参考。</p>
+</li>
+</ul>
+<p>单元测试相关的文件位于unittest目录中，特定于存储引擎和插件的其他文件可能位于存储或插件目录的子目录下。</p>
+<h4 id="测试执行和评估"><a href="#测试执行和评估" class="headerlink" title="测试执行和评估"></a>测试执行和评估</h4>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Guangyu Yang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2021/09/26/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">https://guangyu-y.github.io/yanggyc/2021/09/26/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/yanggyc/tags/%E6%80%BB%E7%BB%93/"># 总结</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/yanggyc/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/yanggyc/2021/09/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/Part1/">数学基础-Part1 （备份）</a>
+            
+            
+            <a class="next" rel="next" href="/yanggyc/2021/09/26/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/">Oracle使用整理</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

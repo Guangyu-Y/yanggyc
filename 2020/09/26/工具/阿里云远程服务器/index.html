@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Guangyu Yang">
+
+
+
+
+
+<title>阿里云远程服务器（CentOs）配置与部署应用 | Hexo</title>
+
+
+
+    <link rel="icon" href="/yanggyc/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/yanggyc/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/yanggyc/js/script.js"></script>
+    
+    <script src="/yanggyc/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/yanggyc/">Yanggyc&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/yanggyc/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/yanggyc/archives">Posts</a>
+                
+                    <a class="menu-item" href="/yanggyc/category">Categories</a>
+                
+                    <a class="menu-item" href="/yanggyc/tag">Tags</a>
+                
+                    <a class="menu-item" href="/yanggyc/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">阿里云远程服务器（CentOs）配置与部署应用</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Guangyu Yang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 26, 2020&nbsp;&nbsp;12:44:48</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/yanggyc/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><strong>阿里云远程服务器（CentOs）配置与部署JavaWeb项目到服务器的Tomcat</strong></p>
+<p><strong>1.购买阿里云服务器（学生价9.9）</strong></p>
+<p><strong>2.用XShell连接阿里云服务器</strong></p>
+<p>XShell连接的下载地址<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1cxVFRo">http://pan.baidu.com/s/1cxVFRo</a></p>
+<p>安装完成之后，打开</p>
+<p>​    <img src="https://note.youdao.com/yws/res/264/C200961F869C442AB92DE2DA24CF38A6" alt="0"></p>
+<p>出现下图</p>
+<p>​    <img src="https://note.youdao.com/yws/res/261/1217FDF9CFA64BD997561DC53F655DC0" alt="0"></p>
+<p>点击</p>
+<p>​    <img src="https://note.youdao.com/yws/res/260/4870BC29CD434A4384E3BF5AA3B258D1" alt="0"></p>
+<p>注意这里的主机是你的公网IP，就是阿里云给你的公网IP地址，</p>
+<p>​    <img src="https://note.youdao.com/yws/res/262/D238CA516B8040FB96DDC8F0E1E6AE78" alt="0"></p>
+<p>点击用户身份验证输入服务器用户和密码（一般用户名是root)</p>
+<p>这里的用户名需要你进入阿里云服务器，进行修改的，密码可以主机设置，如</p>
+<p>​    <img src="https://note.youdao.com/yws/res/265/0F0CAF538BC24281B6254AEB6F3EA3E4" alt="0"></p>
+<p>​    <img src="https://note.youdao.com/yws/res/259/1BF833B202EA4F89B3DEFBF67FDA002E" alt="0"></p>
+<p>接下来点击终端选择语言</p>
+<p>​    <img src="https://note.youdao.com/yws/res/266/24580E0631EE467D845D47D1CB79AC74" alt="0"></p>
+<p>点确定就可以连接服务器了如下图：</p>
+<p>​    <img src="https://note.youdao.com/yws/res/263/756E4811E8B94102AE7B52EDBE65592C" alt="0"></p>
+<p>连接成功想要通过本地将文件传输到服务器，点击工具栏右上角绿色的文件传输，将本地的文件上传到服务器（此时无需连接）。</p>
+<p><strong>2.安装Mysql</strong></p>
+<p><strong>2.1、配置YUM源</strong></p>
+<p>在<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/14"><strong>MySQL</strong></a>官网中下载YUM源rpm安装包：<a target="_blank" rel="noopener" href="http://dev.mysql.com/downloads/repo/yum/">http://dev.mysql.com/downloads/repo/yum/</a> </p>
+<p>​    <img src="https://note.youdao.com/yws/res/292/5F7ABE8DF6E94655A2080321021E6B9A" alt="0"></p>
+<p># 下载mysql源安装包 shell&gt; wget <a target="_blank" rel="noopener" href="http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm">http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm</a> # 安装mysql源 shell&gt; yum localinstall mysql57-community-release-el7-8.noarch.rpm</p>
+<p>检查mysql源是否安装成功</p>
+<p>shell&gt; yum repolist enabled | grep “mysql.<em>-community.</em>“</p>
+<p>​    <img src="https://note.youdao.com/yws/res/296/9EA6F382F32848FA9DDC870FCB5E4056" alt="0"></p>
+<p>看到上图所示表示安装成功</p>
+<p><strong>2.2、安装MySQL</strong></p>
+<p>shell&gt; yum install mysql-community-server</p>
+<p><strong>2.3、启动MySQL服务</strong></p>
+<p>shell&gt; systemctl start mysqld</p>
+<p>查看MySQL的启动状态</p>
+<p>shell&gt; systemctl status mysqld</p>
+<p><strong>2.4、开机启动</strong></p>
+<p>shell&gt; systemctl enable mysqld shell&gt; systemctl daemon-reload</p>
+<p><strong>2.5、修改root默认密码</strong></p>
+<p>mysql安装完成之后，在/var/log/mysqld.log文件中给root生成了一个默认密码。通过下面的方式找到root默认密码，然后登录mysql进行修改：</p>
+<p>shell&gt; grep ‘temporary password’ /var/log/mysqld.log</p>
+<p>shell&gt; mysql -uroot -p</p>
+<p>mysql&gt; set password for ‘root‘@’localhost’=password(‘MyNewPass4!’); </p>
+<p>重新启动mysql服务使配置生效：</p>
+<p>systemctl restart mysqld</p>
+<p><strong>2.6、添加远程登录用户</strong></p>
+<p>grant all privileges on <em>.</em> to ‘root‘@’%’ identified by ‘123456’ with grant option; </p>
+<p>  此语句意思是给root用户在任何IP都可以登录数据库，操作任何数据库中的任何对象。</p>
+<p>其中： </p>
+<p><em>.</em> 第一个*是指数据库</p>
+<p>*代表所有数据库</p>
+<p>第二个*指数据库对象</p>
+<p>*代表数据库中所有对象</p>
+<p> ‘root‘@’%’ root是制定要授权的数据库用户</p>
+<p>%代表允许登录的IP</p>
+<p>123456是你的数据库密码</p>
+<p>假如要限制只能在1.1.1.1登录，把%改成1.1.1.1 ，执行完毕后执行 flush privileges; 刷新权限</p>
+<p>​    <img src="https://note.youdao.com/yws/res/307/1585DD1398964FA89ED91CA3D0F2951C" alt="0"></p>
+<p><strong>2.7、配置默认编码为utf8</strong></p>
+<p>修改/etc/my.cnf配置文件，在[mysqld]下添加编码配置，如下所示：</p>
+<p>[mysqld] character_set_server=utf8 init_connect=’SET NAMES utf8’</p>
+<p>重新启动mysql服务，查看<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/14"><strong>数据库</strong></a>默认编码如下所示：</p>
+<p>​    <img src="https://note.youdao.com/yws/res/291/A5D7A42328DD4E4DA1475DEC259AE130" alt="0"></p>
+<hr>
+<p>此时可以远程访问数据库</p>
+<p><strong>2.8如果因为端口问题不能远程访问</strong></p>
+<p>阿里云需要在购买的实例添加到安全组，在实例中配置安全规则，将访问数据库的3306端口添加到安全组规则。</p>
+<p>2.9 <a target="_blank" rel="noopener" href="http://www.linuxidc.com/Linux/2016-07/133128.htm">http://www.linuxidc.com/Linux/2016-07/133128.htm</a></p>
+<p><strong>3.安装JDK</strong></p>
+<p>下载 JDK 安装包，地址：<a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
+<p>​    <img src="https://note.youdao.com/yws/res/319/7E5A05FEE61B42BFB0174976FE72B1EC" alt="下载JDK安装包"></p>
+<p>将下载好的 JDK 包上传到 Linux 上面：</p>
+<p>​    <img src="https://note.youdao.com/yws/res/316/8878A3B24F744D378D98BCA7E2111ABC" alt="上传到Linux"></p>
+<ul>
+<li>操作步骤</li>
+</ul>
+<ol>
+<li>新建一个目录。</li>
+</ol>
+<ul>
+<li><ol>
+<li> [root@localhost ~]# cd /usr/</li>
+<li> [root@localhost usr]# mkdir java</li>
+<li> [root@localhost usr]# cd java/</li>
+<li> [root@localhost java]# mkdir jdk</li>
+<li> [root@localhost java]# cd jdk</li>
+<li> [root@localhost jdk]#</li>
+</ol>
+</li>
+</ul>
+<p>​    <img src="https://note.youdao.com/yws/res/321/FC2D313E62284B1ABAEAB55EA783428C" alt="新建目录"></p>
+<ol>
+<li>解压 jdk-8u121-linux-x64.tar.gz 到 jdk 目录下：</li>
+</ol>
+<p>[root@localhost mnt]# tar -xvf jdk-8u121-linux-x64.tar.gz -C /usr/java/jdk/</p>
+<p>​    <img src="https://note.youdao.com/yws/res/322/240036ADD89049AA8103DAC8255EE23D" alt="解压"></p>
+<p>​    <img src="https://note.youdao.com/yws/res/320/4EAA47D06A3D42FA8AE1ACCDDD369BD9" alt="解压"></p>
+<ol>
+<li>配置环境变量。</li>
+</ol>
+<p> [root@localhost mnt]# vi /etc/profile</p>
+<p>​    <img src="https://note.youdao.com/yws/res/323/4864224DCCE04E05AC9D641CD1CF903F" alt="配置环境变量"></p>
+<ol>
+<li>在底部添加以下内容。</li>
+</ol>
+<p>#set java environment</p>
+<p>export JAVA_HOME=/usr/java/jdk/jdk1.8.0_121</p>
+<p>export JRE_HOME=/usr/java/jdk/jdk1.8.0_121/jre</p>
+<p>export CLASSPATH=.:$JAVA_HOME/lib$:JRE_HOME/lib:$CLASSPATH</p>
+<p>export PATH=$JAVA_HOME/bin:$JRE_HOME/bin/$JAVA_HOME:$PATH</p>
+<p>​    <img src="https://note.youdao.com/yws/res/317/E00AA8260D8546F59F1A45107B8215FE" alt="添加内容"></p>
+<ol>
+<li>保存后执行以下命令:</li>
+</ol>
+<p>[root@localhost mnt]# source /etc/profile</p>
+<p>​    <img src="https://note.youdao.com/yws/res/324/BD7C5A04868640BCA1670EA3F82E88CA" alt="执行命令"></p>
+<ol>
+<li>验证安装。</li>
+</ol>
+<p>[root@localhost ~]# java -version</p>
+<p>​    <img src="https://note.youdao.com/yws/res/318/12254D9F462F4989A1217790BCE4B933" alt="验证安装"></p>
+<p>我们可以看到 JDK 已经成功安装了。</p>
+<p><strong>3.安装Tomcat</strong></p>
+<p>下载 tomcat linux 的包，地址：<a target="_blank" rel="noopener" href="http://tomcat.apache.org/download-80.cgi">http://tomcat.apache.org/download-80.cgi</a></p>
+<p>​    <img src="https://note.youdao.com/yws/res/334/6BB791E8C4EB406582415B4576F408BF" alt="下载"></p>
+<p>将下载好的 Tomcat 包上传到 Linux 上面：</p>
+<p>​    <img src="https://note.youdao.com/yws/res/335/7B0ADD6D457540C79B12CB206B1608D6" alt="上传"></p>
+<ul>
+<li>操作步骤</li>
+</ul>
+<p><strong>3.1解压 apache-tomcat-8.5.11.tar.gz</strong></p>
+<p># tar -xvf apache-tomcat-8.5.11.tar.gz -C /usr/java/tomcat/</p>
+<p>​    <img src="https://note.youdao.com/yws/res/337/2BE538CBD017432D9E32DA7639768970" alt="解压"></p>
+<ol>
+<li>解压之后，我们进入解压的文件：</li>
+</ol>
+<p>[root@localhost mnt]# cd /usr/java/tomcat/apache-tomcat-8.5.11/</p>
+<p>​    <img src="https://note.youdao.com/yws/res/332/8DCB40A8164043BE80849B81293AEF8C" alt="进入解压的文件"></p>
+<ul>
+<li><ul>
+<li>bin 目录中存放 Tomcat 的一些脚本文件，最重要的也是用的最多就是启动和关系 tomcat 服务脚本。</li>
+<li>conf：存放 Tomcat 服务器的各种全局配置文件，其中最重要的是 server.xml 和 web.xml。</li>
+<li>webapps：Tomcat 的主要 Web 发布目录，默认情况下把 Web 应用文件放于此目录。</li>
+<li>logs：存放 Tomcat 执行时的日志文件</li>
+</ul>
+</li>
+</ul>
+<p><strong>3.2进入到 tomcat 的 bin 目录：</strong></p>
+<p>1.[root@localhost apache-tomcat-8.5.11]# cd bin/</p>
+<p>​    <img src="https://note.youdao.com/yws/res/338/10EDB70C052F456791B465AC8B9FF848" alt="bin目录"></p>
+<ol>
+<li>编辑 setclasspath.sh 脚本，添加以下内容：</li>
+</ol>
+<p>export JAVA_HOME=/usr/java/jdk/jdk1.8.0_121</p>
+<p>export JRE_HOME=/usr/java/jdk/jdk1.8.0_121/jre</p>
+<p>​    <img src="https://note.youdao.com/yws/res/336/70375F6B38244D708CC4CC8092AD9775" alt="添加内容"></p>
+<p><strong>3.3保存后输入以下命令启动 tomcat。</strong></p>
+<p>[root@localhost bin]# ./startup.sh</p>
+<p>​    <img src="https://note.youdao.com/yws/res/333/76998B53AF124193B53DEEAD8A82E6D8" alt="启动"></p>
+<p><strong>4.从浏览器访问</strong></p>
+<p>输入<a target="_blank" rel="noopener" href="http://ip:8080/">http://ip:8080</a> 即可访问，如果外部无法访问，但是 Linux 内部却可以访问，这种情况一般是防火墙的问题，关闭防火墙就可以了。</p>
+<p>​    <img src="https://note.youdao.com/yws/res/331/B353FB595A3243ED9577945CF0F10B3F" alt="访问"></p>
+<p><strong>5.如果同样是因为端口问题</strong></p>
+<p>查看端口当前状态：使用netstat 命令查看占用情况</p>
+<p>netstat -ap |grep 8080 //查找tomcat端口是否被占用</p>
+<p>netstat -tln   //表示以数字形式查看正在监听的端口</p>
+<p>netstat -ap   //查看所有应用占用端口情况</p>
+<p>如果是参考数据库开放3306端口，开放8080端口。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Guangyu Yang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://guangyu-y.github.io/yanggyc/2020/09/26/%E5%B7%A5%E5%85%B7/%E9%98%BF%E9%87%8C%E4%BA%91%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/">https://guangyu-y.github.io/yanggyc/2020/09/26/%E5%B7%A5%E5%85%B7/%E9%98%BF%E9%87%8C%E4%BA%91%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/yanggyc/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"># 环境搭建</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/yanggyc/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/yanggyc/2020/09/26/%E5%B7%A5%E5%85%B7/%E5%85%B3%E4%BA%8Epython%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%B7%A5%E5%85%B7%E9%80%89%E6%8B%A9/">python开发环境搭建</a>
+            
+            
+            <a class="next" rel="next" href="/yanggyc/2019/09/26/python/numpy%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">numpy笔记整理</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
