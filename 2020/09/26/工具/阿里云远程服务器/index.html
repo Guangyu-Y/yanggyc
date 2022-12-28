@@ -1,162 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
 
-    <meta name="author" content="Guangyu Yang">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yanggyc.work","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="阿里云远程服务器（CentOs）配置与部署JavaWeb项目到服务器的Tomcat 1.购买阿里云服务器（学生价9.9） 2.用XShell连接阿里云服务器 XShell连接的下载地址http:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1cxVFRo 安装完成之后，打开 ​     出现下图 ​     点击 ​     注意这里的主机是你的公网IP，就是阿里云给你的公网IP地址， ​     点击用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云远程服务器（CentOs）配置与部署应用">
+<meta property="og:url" content="http://www.yanggyc.work/2020/09/26/%E5%B7%A5%E5%85%B7/%E9%98%BF%E9%87%8C%E4%BA%91%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="Yanggyc.Blog">
+<meta property="og:description" content="阿里云远程服务器（CentOs）配置与部署JavaWeb项目到服务器的Tomcat 1.购买阿里云服务器（学生价9.9） 2.用XShell连接阿里云服务器 XShell连接的下载地址http:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1cxVFRo 安装完成之后，打开 ​     出现下图 ​     点击 ​     注意这里的主机是你的公网IP，就是阿里云给你的公网IP地址， ​     点击用户">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://note.youdao.com/yws/res/264/C200961F869C442AB92DE2DA24CF38A6">
+<meta property="og:image" content="https://note.youdao.com/yws/res/261/1217FDF9CFA64BD997561DC53F655DC0">
+<meta property="og:image" content="https://note.youdao.com/yws/res/260/4870BC29CD434A4384E3BF5AA3B258D1">
+<meta property="og:image" content="https://note.youdao.com/yws/res/262/D238CA516B8040FB96DDC8F0E1E6AE78">
+<meta property="og:image" content="https://note.youdao.com/yws/res/265/0F0CAF538BC24281B6254AEB6F3EA3E4">
+<meta property="og:image" content="https://note.youdao.com/yws/res/259/1BF833B202EA4F89B3DEFBF67FDA002E">
+<meta property="og:image" content="https://note.youdao.com/yws/res/266/24580E0631EE467D845D47D1CB79AC74">
+<meta property="og:image" content="https://note.youdao.com/yws/res/263/756E4811E8B94102AE7B52EDBE65592C">
+<meta property="og:image" content="https://note.youdao.com/yws/res/292/5F7ABE8DF6E94655A2080321021E6B9A">
+<meta property="og:image" content="https://note.youdao.com/yws/res/296/9EA6F382F32848FA9DDC870FCB5E4056">
+<meta property="og:image" content="https://note.youdao.com/yws/res/307/1585DD1398964FA89ED91CA3D0F2951C">
+<meta property="og:image" content="https://note.youdao.com/yws/res/291/A5D7A42328DD4E4DA1475DEC259AE130">
+<meta property="og:image" content="https://note.youdao.com/yws/res/319/7E5A05FEE61B42BFB0174976FE72B1EC">
+<meta property="og:image" content="https://note.youdao.com/yws/res/316/8878A3B24F744D378D98BCA7E2111ABC">
+<meta property="og:image" content="https://note.youdao.com/yws/res/321/FC2D313E62284B1ABAEAB55EA783428C">
+<meta property="og:image" content="https://note.youdao.com/yws/res/322/240036ADD89049AA8103DAC8255EE23D">
+<meta property="og:image" content="https://note.youdao.com/yws/res/320/4EAA47D06A3D42FA8AE1ACCDDD369BD9">
+<meta property="og:image" content="https://note.youdao.com/yws/res/323/4864224DCCE04E05AC9D641CD1CF903F">
+<meta property="og:image" content="https://note.youdao.com/yws/res/317/E00AA8260D8546F59F1A45107B8215FE">
+<meta property="og:image" content="https://note.youdao.com/yws/res/324/BD7C5A04868640BCA1670EA3F82E88CA">
+<meta property="og:image" content="https://note.youdao.com/yws/res/318/12254D9F462F4989A1217790BCE4B933">
+<meta property="og:image" content="https://note.youdao.com/yws/res/334/6BB791E8C4EB406582415B4576F408BF">
+<meta property="og:image" content="https://note.youdao.com/yws/res/335/7B0ADD6D457540C79B12CB206B1608D6">
+<meta property="og:image" content="https://note.youdao.com/yws/res/337/2BE538CBD017432D9E32DA7639768970">
+<meta property="og:image" content="https://note.youdao.com/yws/res/332/8DCB40A8164043BE80849B81293AEF8C">
+<meta property="og:image" content="https://note.youdao.com/yws/res/338/10EDB70C052F456791B465AC8B9FF848">
+<meta property="og:image" content="https://note.youdao.com/yws/res/336/70375F6B38244D708CC4CC8092AD9775">
+<meta property="og:image" content="https://note.youdao.com/yws/res/333/76998B53AF124193B53DEEAD8A82E6D8">
+<meta property="og:image" content="https://note.youdao.com/yws/res/331/B353FB595A3243ED9577945CF0F10B3F">
+<meta property="article:published_time" content="2020-09-26T04:44:48.000Z">
+<meta property="article:modified_time" content="2022-12-27T07:15:05.770Z">
+<meta property="article:author" content="Guangyu Yang">
+<meta property="article:tag" content="环境搭建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://note.youdao.com/yws/res/264/C200961F869C442AB92DE2DA24CF38A6">
 
 
+<link rel="canonical" href="http://www.yanggyc.work/2020/09/26/%E5%B7%A5%E5%85%B7/%E9%98%BF%E9%87%8C%E4%BA%91%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.yanggyc.work/2020/09/26/%E5%B7%A5%E5%85%B7/%E9%98%BF%E9%87%8C%E4%BA%91%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/","path":"2020/09/26/工具/阿里云远程服务器/","title":"阿里云远程服务器（CentOs）配置与部署应用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>阿里云远程服务器（CentOs）配置与部署应用 | Yanggyc.Blog</title>
+  
 
 
 
-    <link rel="icon" href="/favicon.ico">
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Yanggyc.Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
 
 
 
 
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
 
 
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-            const isDark = currentTheme === 'dark';
-            const pagebody = document.getElementsByTagName('body')[0]
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-        })();
-    </script>
-
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Yanggyc&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
 
 </header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                <div class="container">
-    
-    
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Guangyu Yang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
 
     
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">阿里云远程服务器（CentOs）配置与部署应用</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">Guangyu Yang</a>
-                    
+  </aside>
 
-                    
-                        <span class="post-time">
-                        Date: <a href="#">September 26, 2020&nbsp;&nbsp;12:44:48</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
 
-        <div class="post-content">
-            <p><strong>阿里云远程服务器（CentOs）配置与部署JavaWeb项目到服务器的Tomcat</strong></p>
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2020/09/26/%E5%B7%A5%E5%85%B7/%E9%98%BF%E9%87%8C%E4%BA%91%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="阿里云远程服务器（CentOs）配置与部署应用 | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阿里云远程服务器（CentOs）配置与部署应用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-09-26 12:44:48" itemprop="dateCreated datePublished" datetime="2020-09-26T12:44:48+08:00">2020-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-27 15:15:05" itemprop="dateModified" datetime="2022-12-27T15:15:05+08:00">2022-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>阿里云远程服务器（CentOs）配置与部署JavaWeb项目到服务器的Tomcat</strong></p>
 <p><strong>1.购买阿里云服务器（学生价9.9）</strong></p>
 <p><strong>2.用XShell连接阿里云服务器</strong></p>
 <p>XShell连接的下载地址<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1cxVFRo">http://pan.baidu.com/s/1cxVFRo</a></p>
@@ -325,99 +412,92 @@
 <p>netstat -ap   //查看所有应用占用端口情况</p>
 <p>如果是参考数据库开放3306端口，开放8080端口。</p>
 
-        </div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag"># 环境搭建</a>
+          </div>
 
         
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>Guangyu Yang</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="http://www.yanggyc.work/2020/09/26/%E5%B7%A5%E5%85%B7/%E9%98%BF%E9%87%8C%E4%BA%91%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/">http://www.yanggyc.work/2020/09/26/%E5%B7%A5%E5%85%B7/%E9%98%BF%E9%87%8C%E4%BA%91%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8/</a></span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-                     <p class="copyright-item">
-                         <span>Slogan:</span>
-                         <span>Do you believe in <strong>DESTINY</strong>?</span>
-                     </p>
-                
 
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"># 环境搭建</a>
-                    
-                        
-                </span>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/09/26/python/numpy%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" rel="prev" title="numpy笔记整理">
+                  <i class="fa fa-chevron-left"></i> numpy笔记整理
+                </a>
             </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
+            <div class="post-nav-item">
+                <a href="/2020/09/26/%E5%B7%A5%E5%85%B7/%E5%85%B3%E4%BA%8Epython%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%B7%A5%E5%85%B7%E9%80%89%E6%8B%A9/" rel="next" title="python开发环境搭建">
+                  python开发环境搭建 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2020/09/26/%E5%B7%A5%E5%85%B7/%E5%85%B3%E4%BA%8Epython%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%B7%A5%E5%85%B7%E9%80%89%E6%8B%A9/">python开发环境搭建</a>
-            
-            
-            <a class="next" rel="next" href="/2019/09/26/python/numpy%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">numpy笔记整理</a>
-            
-        </section>
-
-
-    </article>
+          </div>
+    </footer>
+  </article>
 </div>
 
 
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
-<div id="gitalk-container"></div>
-<script type="text/javascript">
-      var gitalk = new Gitalk({
-        clientID: '18aefbbad882356d6c8b',
-        clientSecret: '9015c2ee67546808c0404a85987c26acabab56e7',
-        repo: 'yanggyc',
-        owner: 'Guangyu-Y',
-        admin: 'Guangyu-Y',
-        id: location.pathname,
-        labels: 'Gitalk'.split(',').filter(l => l),
-        perPage: 10,
-        pagerDirection: 'last',
-        createIssueManually: true,
-        distractionFreeMode: false
-      })
-      gitalk.render('gitalk-container')
-</script>
 
 
 
-            </div>
-            <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
-    </div>
-</footer>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guangyu Yang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
 
     </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
 </body>
-
 </html>

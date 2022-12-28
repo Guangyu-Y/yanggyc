@@ -1,227 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
 
-    <meta name="author" content="Guangyu Yang">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yanggyc.work","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Hadoop第一章 大数据的概述1.1 大数据的概念最近几年，IT行业最火的名词中，少不了”大数据”、”人工智能”、”云计算”、”物联网”、”区块链”等等这些名词。针对于**”大数据”**这个名词，现在更是全国老百姓，老少皆知的一个词语。但是什么是大数据，除了IT行业的专业人士外，其他人乃至其他行业的人，除了能说出”数据量大”之外，好像真的不能再更深层次的解释了。那么我们来看看下面几个权威机构给出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hadoop">
+<meta property="og:url" content="http://www.yanggyc.work/2019/09/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/index.html">
+<meta property="og:site_name" content="Yanggyc.Blog">
+<meta property="og:description" content="Hadoop第一章 大数据的概述1.1 大数据的概念最近几年，IT行业最火的名词中，少不了”大数据”、”人工智能”、”云计算”、”物联网”、”区块链”等等这些名词。针对于**”大数据”**这个名词，现在更是全国老百姓，老少皆知的一个词语。但是什么是大数据，除了IT行业的专业人士外，其他人乃至其他行业的人，除了能说出”数据量大”之外，好像真的不能再更深层次的解释了。那么我们来看看下面几个权威机构给出">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401012832988.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401013100075.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401013159672.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401104441770.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401104504725.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401104625494.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401104650560.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401104811173.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401105627870.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401105639009.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401105654266.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401110221175.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401110453904.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401110508586.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401110748741.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401110919469.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401111009995.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401111303037.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401111326294.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401112649301.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210414093345557.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210414093407057.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210414095815391.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/20191016063209.jpg">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210414100109033.png">
+<meta property="og:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210414101324462.png">
+<meta property="article:published_time" content="2019-09-26T04:44:48.000Z">
+<meta property="article:modified_time" content="2022-12-27T07:15:05.766Z">
+<meta property="article:author" content="Guangyu Yang">
+<meta property="article:tag" content="概念">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://notebook-1257935960.file.myqcloud.com//img/image-20210401012832988.png">
 
 
+<link rel="canonical" href="http://www.yanggyc.work/2019/09/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.yanggyc.work/2019/09/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/","path":"2019/09/26/大数据开发/Hadoop/","title":"hadoop"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>hadoop | Yanggyc.Blog</title>
+  
 
 
 
-    <link rel="icon" href="/favicon.ico">
 
 
 
+  <script async defer data-website-id="" src=""></script>
 
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
+  <script defer data-domain="" src=""></script>
 
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
 
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-            const isDark = currentTheme === 'dark';
-            const pagebody = document.getElementsByTagName('body')[0]
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-        })();
-    </script>
-
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Yanggyc&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Yanggyc.Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
     </div>
+  </div>
 </div>
 
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
 
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
-    }
 
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
 
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
 
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
 
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
 
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hadoop"><span class="nav-number">1.</span> <span class="nav-text">Hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">第一章 大数据的概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 大数据的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 大数据的特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 大数据的应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8F%91%E5%B1%95%E5%89%8D%E6%99%AF"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 大数据的发展前景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-Hadoop%E6%A6%82%E8%BF%B0"><span class="nav-number">1.2.</span> <span class="nav-text">第二章 Hadoop概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8hadoop"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 为什么要用hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Hadoop%E7%9A%84%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Hadoop的简要介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%B0%B7%E6%AD%8C%E7%9A%84%E4%B8%89%E7%AF%87%E8%AE%BA%E6%96%87"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 谷歌的三篇论文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Hadoop%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 Hadoop的发展历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Hadoop%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 Hadoop的组成部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-Hadoop%E7%9A%84%E7%94%9F%E6%80%81%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6. Hadoop的生态系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-Hadoop%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.</span> <span class="nav-text">第三章 Hadoop集群安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 集群规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%AE%89%E8%A3%85JDK"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 安装JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-%E6%A3%80%E6%9F%A5%E4%B8%80%E4%B8%8B%E6%98%AF%E5%90%A6%E5%B7%B2%E7%BB%8F%E5%AE%89%E8%A3%85%E8%BF%87%E6%88%96%E8%80%85%E7%B3%BB%E7%BB%9F%E5%86%85%E7%BD%AEJDK-%E5%A6%82%E6%9E%9C%E6%9C%89%E5%86%85%E7%BD%AE%E7%9A%84%EF%BC%8C%E5%B0%86%E5%85%B6%E5%8D%B8%E8%BD%BD"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">3.2.1 检查一下是否已经安装过或者系统内置JDK,如果有内置的，将其卸载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-%E4%B8%8A%E4%BC%A0jdk1-8"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">3.2.2 上传jdk1.8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-%E8%A7%A3%E5%8E%8Bjdk%E5%88%B0-usr-local-%E4%B8%8B"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">3.2.3 解压jdk到&#x2F;usr&#x2F;local&#x2F;下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-%E6%9B%B4%E5%90%8Djdk"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">3.2.4 更名jdk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-%E9%85%8D%E7%BD%AEJdk%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9A-etc-profile"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">3.2.5 配置Jdk的环境变量：&#x2F;etc&#x2F;profile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-6-%E4%BD%BF%E5%BD%93%E5%89%8D%E7%AA%97%E5%8F%A3%E7%94%9F%E6%95%88"><span class="nav-number">1.3.2.6.</span> <span class="nav-text">3.2.6 使当前窗口生效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-7-%E9%AA%8C%E8%AF%81jdk%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.2.7.</span> <span class="nav-text">3.2.7 验证jdk环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E9%9C%80%E6%B1%82%E5%8F%8A%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3. 完全分布式环境需求及安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">3.3.1 关闭防火墙</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-%E9%9D%99%E6%80%81IP%E5%92%8C%E4%B8%BB%E6%9C%BA%E5%90%8D%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">3.3.2 静态IP和主机名配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-3-%E9%85%8D%E7%BD%AE-etc-hosts%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">3.3.3 配置&#x2F;etc&#x2F;hosts文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-4-%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">3.3.4 免密登录认证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-5-%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">1.3.3.5.</span> <span class="nav-text">3.3.5 时间同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-6-Hadoop%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.3.6.</span> <span class="nav-text">3.3.6 Hadoop安装与环境变量配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Hadoop%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4. Hadoop的配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">3.4.1. 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-core-site-xml"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">3.4.2. core-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-3-hdfs-site-xml"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">3.4.3. hdfs-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-4-mapred-site-xml"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">3.4.4. mapred-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-5-yarn-site-xml"><span class="nav-number">1.3.4.5.</span> <span class="nav-text">3.4.5 yarn-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-6-hadoop-env-sh"><span class="nav-number">1.3.4.6.</span> <span class="nav-text">3.4.6 hadoop-env.sh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-7-yarn-env-sh"><span class="nav-number">1.3.4.7.</span> <span class="nav-text">3.4.7 yarn-env.sh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-8-slaves"><span class="nav-number">1.3.4.8.</span> <span class="nav-text">3.4.8 slaves</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-9-%E5%88%86%E5%8F%91%E5%88%B0%E5%8F%A6%E5%A4%96%E4%B8%A4%E5%8F%B0%E8%8A%82%E7%82%B9"><span class="nav-number">1.3.4.9.</span> <span class="nav-text">3.4.9 分发到另外两台节点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8E%E5%90%AF%E5%8A%A8"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 格式化与启动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-1-%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%9B%86%E7%BE%A4"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">3.5.1 格式化集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-2-%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">3.5.2 启动集群</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-HDFS%E7%9A%84Shell%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.</span> <span class="nav-text">第四章 HDFS的Shell命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 创建目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E4%B8%8A%E4%BC%A0%E6%8C%87%E4%BB%A4"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 上传指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%88%9B%E5%BB%BA%E7%A9%BA%E6%96%87%E4%BB%B6"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 创建空文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E5%90%91%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E9%87%8C%E8%BF%BD%E5%8A%A0%E5%86%85%E5%AE%B9"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 向分布式文件系统中的文件里追加内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E6%9F%A5%E7%9C%8B%E6%8C%87%E4%BB%A4"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5 查看指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E4%B8%8B%E8%BD%BD%E6%8C%87%E4%BB%A4"><span class="nav-number">1.4.6.</span> <span class="nav-text">4.6 下载指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-%E5%90%88%E5%B9%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.4.7.</span> <span class="nav-text">4.7 合并下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-8-%E7%A7%BB%E5%8A%A8hdfs%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%88%E6%9B%B4%E5%90%8D%EF%BC%89"><span class="nav-number">1.4.8.</span> <span class="nav-text">4.8  移动hdfs中的文件（更名）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-9-%E5%A4%8D%E5%88%B6hdfs%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E5%88%B0hdfs%E7%9A%84%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9B%AE%E5%BD%95"><span class="nav-number">1.4.9.</span> <span class="nav-text">4.9 复制hdfs中的文件到hdfs的另一个目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-10-%E5%88%A0%E9%99%A4%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.10.</span> <span class="nav-text">4.10 删除命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-11-%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E5%88%A9%E7%94%A8%E7%8E%87%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.4.11.</span> <span class="nav-text">4.11 查看磁盘利用率和文件大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-12-%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90%E7%9A%84"><span class="nav-number">1.4.12.</span> <span class="nav-text">4.12 修改权限的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-13-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E7%9A%84%E5%89%AF%E6%9C%AC%E6%95%B0"><span class="nav-number">1.4.13.</span> <span class="nav-text">4.13 修改文件的副本数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-14-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">1.4.14.</span> <span class="nav-text">4.14 查看文件的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-15-%E6%B5%8B%E8%AF%95"><span class="nav-number">1.4.15.</span> <span class="nav-text">4.15 测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-HDFS%E7%9A%84%E5%9D%97%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">1.5.</span> <span class="nav-text">第五章 HDFS的块的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E4%BC%A0%E7%BB%9F%E5%9E%8B%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 传统型分布式文件系统的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-HDFS%E7%9A%84%E5%9D%97"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 HDFS的块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-HDFS%E7%9A%84%E5%9D%97%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 HDFS的块大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E5%9D%97%E7%9A%84%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.5.4.</span> <span class="nav-text">5.4 块的相关参数设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E5%9D%97%E7%9A%84%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.5.5.</span> <span class="nav-text">5.5 块的存储位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-HDFS%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">1.5.6.</span> <span class="nav-text">5.6 HDFS的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-HDFS%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">1.5.7.</span> <span class="nav-text">5.7 HDFS的缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-HDFS%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">1.6.</span> <span class="nav-text">第六章 HDFS的体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E8%A7%A3%E6%9E%90"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 体系结构解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8HDFS%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 开机启动HDFS的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-1-%E9%9D%9E%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">6.2.1 非第一次启动集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-2-%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">6.2.2 第一次启动集群</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-SecondaryNameNode%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="nav-number">1.6.3.</span> <span class="nav-text">6.3 SecondaryNameNode的工作机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-HDFS%E7%9A%84%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B"><span class="nav-number">1.7.</span> <span class="nav-text">第七章 HDFS的读写流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E8%AF%BB%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.7.1.</span> <span class="nav-text">7.1 读流程详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E5%86%99%E6%B5%81%E7%A8%8B%E7%9A%84%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.7.2.</span> <span class="nav-text">7.2 写流程的详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-Zookeeper%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="nav-number">1.8.</span> <span class="nav-text">第八章 Zookeeper的概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-Zookeeper%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.8.1.</span> <span class="nav-text">8.1 Zookeeper是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-Zookeeper%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">1.8.2.</span> <span class="nav-text">8.2 Zookeeper的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-Zookeeper%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.8.3.</span> <span class="nav-text">8.3 Zookeeper的数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-Zookeeper%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.8.4.</span> <span class="nav-text">8.4 Zookeeper的应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-Zookeeper%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.9.</span> <span class="nav-text">第九章 Zookeeper的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">1.9.1.</span> <span class="nav-text">9.1. 安装与环境变量的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">1.9.2.</span> <span class="nav-text">9.2. 集群模式的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-1-Zookeeper%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%BF%9B%E7%A8%8B%E5%B8%83%E5%B1%80"><span class="nav-number">1.9.2.1.</span> <span class="nav-text">9.2.1 Zookeeper的服务进程布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-2-%E4%BF%AE%E6%94%B9zoo-cfg%E6%96%87%E4%BB%B6"><span class="nav-number">1.9.2.2.</span> <span class="nav-text">9.2.2 修改zoo.cfg文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-3-%E6%B7%BB%E5%8A%A0myid"><span class="nav-number">1.9.2.3.</span> <span class="nav-text">9.2.3 添加myid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-4-%E6%90%AD%E5%BB%BA%E5%85%B6%E4%BB%96%E4%B8%A4%E4%B8%AAserver%E8%8A%82%E7%82%B9%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="nav-number">1.9.2.4.</span> <span class="nav-text">9.2.4 搭建其他两个server节点的环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-5-%E5%90%AF%E5%8A%A8zookeeper"><span class="nav-number">1.9.2.5.</span> <span class="nav-text">9.2.5 启动zookeeper</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-Zookeeper%E7%9A%84Shell%E6%93%8D%E4%BD%9C"><span class="nav-number">1.10.</span> <span class="nav-text">第十章 Zookeeper的Shell操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-YARN%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="nav-number">1.11.</span> <span class="nav-text">第十一章 YARN的概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-YARN%E7%9A%84%E6%9E%B6%E6%9E%84%E5%8F%8A%E7%BB%84%E4%BB%B6"><span class="nav-number">1.12.</span> <span class="nav-text">第十二章 YARN的架构及组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-1-MapReduce-1-x%E7%9A%84%E7%AE%80%E4%BB%8B"><span class="nav-number">1.12.1.</span> <span class="nav-text">12.1. MapReduce 1.x的简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-YARN%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3"><span class="nav-number">1.12.2.</span> <span class="nav-text">12.2. YARN的设计思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-3-YARN%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">1.12.3.</span> <span class="nav-text">12.3. YARN的配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-YARN%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="nav-number">1.13.</span> <span class="nav-text">第十三章 YARN的执行原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-YARN%E7%9A%84%E6%A1%88%E4%BE%8B%E6%B5%8B%E8%AF%95"><span class="nav-number">1.14.</span> <span class="nav-text">第十四章 YARN的案例测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0-YARN%E7%9A%84Web-UI%E6%9F%A5%E7%9C%8B"><span class="nav-number">1.15.</span> <span class="nav-text">第十五章 YARN的Web UI查看</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Guangyu Yang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
     
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2019/09/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="hadoop | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hadoop
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-09-26 12:44:48" itemprop="dateCreated datePublished" datetime="2019-09-26T12:44:48+08:00">2019-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-27 15:15:05" itemprop="dateModified" datetime="2022-12-27T15:15:05+08:00">2022-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">大数据开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
 
     
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">hadoop</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">Guangyu Yang</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">September 26, 2019&nbsp;&nbsp;12:44:48</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/">大数据开发</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><h2 id="第一章-大数据的概述"><a href="#第一章-大数据的概述" class="headerlink" title="第一章 大数据的概述"></a>第一章 大数据的概述</h2><h3 id="1-1-大数据的概念"><a href="#1-1-大数据的概念" class="headerlink" title="1.1 大数据的概念"></a>1.1 大数据的概念</h3><p>最近几年，IT行业最火的名词中，少不了”大数据”、”人工智能”、”云计算”、”物联网”、”区块链”等等这些名词。针对于**”大数据”**这个名词，现在更是全国老百姓，老少皆知的一个词语。但是什么是大数据，除了IT行业的专业人士外，其他人乃至其他行业的人，除了能说出”数据量大”之外，好像真的不能再更深层次的解释了。那么我们来看看下面几个权威机构给出的解释。</p>
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><h2 id="第一章-大数据的概述"><a href="#第一章-大数据的概述" class="headerlink" title="第一章 大数据的概述"></a>第一章 大数据的概述</h2><h3 id="1-1-大数据的概念"><a href="#1-1-大数据的概念" class="headerlink" title="1.1 大数据的概念"></a>1.1 大数据的概念</h3><p>最近几年，IT行业最火的名词中，少不了”大数据”、”人工智能”、”云计算”、”物联网”、”区块链”等等这些名词。针对于**”大数据”**这个名词，现在更是全国老百姓，老少皆知的一个词语。但是什么是大数据，除了IT行业的专业人士外，其他人乃至其他行业的人，除了能说出”数据量大”之外，好像真的不能再更深层次的解释了。那么我们来看看下面几个权威机构给出的解释。</p>
 <p>**维基百科 **给出的定义：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据规模巨大到无法通过人工在合理的时间内达到截取，管理，处理并整理成为人类所解读的信息。</span><br></pre></td></tr></table></figure>
 
@@ -760,99 +780,92 @@
 <h2 id="第十五章-YARN的Web-UI查看"><a href="#第十五章-YARN的Web-UI查看" class="headerlink" title="第十五章 YARN的Web UI查看"></a>第十五章 YARN的Web UI查看</h2><p>使用8088端口，可以查看YARN任务的WebUI</p>
 <p><img src="http://notebook-1257935960.file.myqcloud.com//img/image-20210414101324462.png" alt="image-20210414101324462"></p>
 
-        </div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%A6%82%E5%BF%B5/" rel="tag"># 概念</a>
+          </div>
 
         
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>Guangyu Yang</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="http://www.yanggyc.work/2019/09/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/">http://www.yanggyc.work/2019/09/26/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Hadoop/</a></span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-                     <p class="copyright-item">
-                         <span>Slogan:</span>
-                         <span>Do you believe in <strong>DESTINY</strong>?</span>
-                     </p>
-                
 
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/%E6%A6%82%E5%BF%B5/"># 概念</a>
-                    
-                        
-                </span>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/09/26/Java/Maven%E4%BD%BF%E7%94%A8%E9%9A%8F%E7%AC%94/" rel="prev" title="maven使用工具">
+                  <i class="fa fa-chevron-left"></i> maven使用工具
+                </a>
             </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
+            <div class="post-nav-item">
+                <a href="/2019/09/26/%E5%B7%A5%E5%85%B7/%E4%B8%80%E4%B8%AApython%E7%9A%84%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%84%9A%E6%9C%AC/" rel="next" title="python的文件服务脚本">
+                  python的文件服务脚本 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2019/09/26/%E5%B7%A5%E5%85%B7/%E4%B8%80%E4%B8%AApython%E7%9A%84%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%84%9A%E6%9C%AC/">python的文件服务脚本</a>
-            
-            
-            <a class="next" rel="next" href="/2018/09/26/Java/Spring%E4%BC%A0%E6%92%AD%E6%96%B9%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E5%B5%8C%E5%A5%97%E4%BD%BF%E7%94%A8/">Spring传播方式的理解与其嵌套使用</a>
-            
-        </section>
-
-
-    </article>
+          </div>
+    </footer>
+  </article>
 </div>
 
 
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
-<div id="gitalk-container"></div>
-<script type="text/javascript">
-      var gitalk = new Gitalk({
-        clientID: '18aefbbad882356d6c8b',
-        clientSecret: '9015c2ee67546808c0404a85987c26acabab56e7',
-        repo: 'yanggyc',
-        owner: 'Guangyu-Y',
-        admin: 'Guangyu-Y',
-        id: location.pathname,
-        labels: 'Gitalk'.split(',').filter(l => l),
-        perPage: 10,
-        pagerDirection: 'last',
-        createIssueManually: true,
-        distractionFreeMode: false
-      })
-      gitalk.render('gitalk-container')
-</script>
 
 
 
-            </div>
-            <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
-    </div>
-</footer>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guangyu Yang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
 
     </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
 </body>
-
 </html>

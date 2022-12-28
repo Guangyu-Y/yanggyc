@@ -1,190 +1,1282 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
 
-    <meta name="author" content="Guangyu Yang">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.yanggyc.work","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Yanggyc.Blog">
+<meta property="og:url" content="http://www.yanggyc.work/index.html">
+<meta property="og:site_name" content="Yanggyc.Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Guangyu Yang">
+<meta name="twitter:card" content="summary">
 
 
+<link rel="canonical" href="http://www.yanggyc.work/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Yanggyc.Blog</title>
+  
 
 
 
-    <link rel="icon" href="/favicon.ico">
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Yanggyc.Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
 
 
 
 
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
 
 
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-            const isDark = currentTheme === 'dark';
-            const pagebody = document.getElementsByTagName('body')[0]
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-        })();
-    </script>
-
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Yanggyc&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Yanggyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
 
 </header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                
-    <div class="container profile-container">
-    <div class="intro">
-        <div class="avatar">
-            <a href="/archives"><img src="/image/avatar.jpeg"></a>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
         </div>
-        <div class="nickname">Guangyu Yang</div>
-        <div class="description"><p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> <br>Fusce eget urna vitae velit <em>eleifend interdum at ac</em> nisi.</p>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Guangyu Yang</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
-        <div class="links">
-            
-                
-                    <a class="link-item" title="Blog" href="/archives">
-                        
-                        
-                            <i class="iconfont icon-blog"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="ZhiHu" target="_blank" rel="noopener" href="https://www.zhihu.com/people/yang-guang-yu-77-44">
-                        
-                        
-                            <i class="iconfont icon-zhihu"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="LinkedIn" target="_blank" rel="noopener" href="https://www.linkedin.com/in/%E5%B9%BF%E5%AE%87-%E6%9D%A8-9b7201126/">
-                        
-                        
-                            <i class="iconfont icon-linkedin"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Weibo" target="_blank" rel="noopener" href="https://weibo.com/u/5388377373">
-                        
-                        
-                            <i class="iconfont icon-weibo"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Github" target="_blank" rel="noopener" href="https://github.com/Guangyu-Y">
-                        
-                        
-                            <i class="iconfont icon-github"></i>
-                        
-                    </a>
-                
-            
-        </div>
-    </div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
 </div>
 
-
-            </div>
-            <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© Guangyu Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+        </div>
+      </div>
     </div>
-</footer>
+
+    
+  </aside>
+
 
     </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2022/12/27/%E6%B5%8B%E8%AF%95/MySQL%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E8%BF%9B%E5%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/27/%E6%B5%8B%E8%AF%95/MySQL%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E8%BF%9B%E5%BA%A6/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-12-27 15:15:05" itemprop="dateCreated datePublished" datetime="2022-12-27T15:15:05+08:00">2022-12-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><ul>
+<li>select_all.test</li>
+</ul>
+<pre><code class="shell"># 根据MySQL执行情况生成测试结果
+mysqltest -h10.134.37.19 -p1q2w3e4R@ -P3306 --database=testdb --test-file=t/select_all.test --result-file=r/select_all.result --record
+
+# 运行测试
+mysqltest -h10.134.37.19 -p1q2w3e4R@ -P3306 --database=testdb testdb &lt; t/select_all.test
+</code></pre>
+<p>- </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2022/12/26/%E5%B7%A5%E5%85%B7/python%E8%84%9A%E6%9C%AC%E7%9A%84%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/26/%E5%B7%A5%E5%85%B7/python%E8%84%9A%E6%9C%AC%E7%9A%84%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">python参数解析</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-12-26 20:46:25 / Modified: 19:47:35" itemprop="dateCreated datePublished" datetime="2022-12-26T20:46:25+08:00">2022-12-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="getopt的使用"><a href="#getopt的使用" class="headerlink" title="getopt的使用"></a>getopt的使用</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/77285215">Python中getopt的用法详解 - 知乎 (zhihu.com)</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>(<span class="params">argv</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        opts, args = getopt.getopt(argv, <span class="string">&quot;hf:&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> getopt.GetoptError:</span><br><span class="line">       blog.error(<span class="string">&quot;-f &lt;log_file&gt;&quot;</span>)</span><br><span class="line">       sys.exit(<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">for</span> opt, arg <span class="keyword">in</span> opts:</span><br><span class="line">        <span class="keyword">if</span> opt == <span class="string">&quot;-f&quot;</span>:</span><br><span class="line">            log_file = arg</span><br><span class="line">            url, result = get_result_log(log_file)</span><br><span class="line">            <span class="built_in">print</span>(get_report_message_to_agile(log_file.split(<span class="string">&quot;.&quot;</span>)[<span class="number">0</span>] ,url, result))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main(sys.argv[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
+
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><ol>
+<li>命令行参数获取，使用sys.argv，通过数组定位，返回参数。即sys.argv[1:]。</li>
+<li>参数获取，使用getopt包的getopt方法，将系统参数传入，通过for循环，获取参数键值对。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2022/12/26/C&C++/%E5%A4%9A%E6%A0%B8%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%9B%B8%E5%85%B3API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/26/C&C++/%E5%A4%9A%E6%A0%B8%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%9B%B8%E5%85%B3API/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-12-26 19:16:00" itemprop="dateCreated datePublished" datetime="2022-12-26T19:16:00+08:00">2022-12-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2022/12/26/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/26/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-12-26 16:02:57" itemprop="dateCreated datePublished" datetime="2022-12-26T16:02:57+08:00">2022-12-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2022/09/26/%E8%8B%B1%E8%AF%AD/2022-10-13%E8%AF%AD%E6%B3%95%E4%BD%9C%E4%B8%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/%E8%8B%B1%E8%AF%AD/2022-10-13%E8%AF%AD%E6%B3%95%E4%BD%9C%E4%B8%9A/" class="post-title-link" itemprop="url">语法作业20221013</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 12:44:48" itemprop="dateCreated datePublished" datetime="2022-09-26T12:44:48+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-27 15:15:05" itemprop="dateModified" datetime="2022-12-27T15:15:05+08:00">2022-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%8B%B1%E8%AF%AD/" itemprop="url" rel="index"><span itemprop="name">英语</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="P15"><a href="#P15" class="headerlink" title="P15"></a><strong>P15</strong></h3><ol>
+<li><p>找出谓语动词</p>
+</li>
+<li><p>History written by winners contains bias. <strong>(谓语动词：contains)</strong></p>
+</li>
+<li><p>Consuming too much junk food negatively influences health.<strong>(谓语动词：influences)</strong></p>
+</li>
+<li><p>To punish a very young child is both wrong and foolish.<strong>(谓语动词：is)</strong></p>
+</li>
+<li><p>Attaining speeds of up to 60 miles per hour,cheetahs are perhaps the fastest of land animals.<strong>(谓语动词：are)</strong></p>
+</li>
+<li><p>Play date arranged by school provides children with the opportunity to socialise with friends.<strong>(谓语动词：provides)</strong></p>
+</li>
+<li><p>判断该句是简单句</p>
+</li>
+</ol>
+<p>该句主谓结构：The pace has increased.</p>
+<h3 id="P133"><a href="#P133" class="headerlink" title="P133"></a><strong>P133</strong></h3><ol>
+<li>简单句翻译</li>
+</ol>
+<p>(1）近年来政界有更多的女性。</p>
+<blockquote>
+<p>In recent years, there are more women in politices.<br>  <strong>There are more females in politics in recent years</strong>  </p>
+</blockquote>
+<p>(2）网络让人们接触到几乎任何领域的信息。</p>
+<p>The internet let pepole get information in almost any fields. [The internet enables people to get access to information in almost any fields.]</p>
+<p>(3）将文化和旅游结合在一起是拯救文化的唯一办法。</p>
+<p>Combing culture and tourism is the only way to save culture. [Combing culture with tourism is the only way to save culture.]</p>
+<p>(4）在全球化的背景下，守传统让年轻人有种文化认同感。</p>
+<p>In the age of global, following the tradition enables people have recognition of cultural identity.[In the age of globalization, following the tradition enables people to habe a sence of identity.]</p>
+<p>(5）蔬菜的消耗量有所下降。</p>
+<p>The consumption of vegetables has declined.[There is a decline in consumption of vegetables.]</p>
+<p>(6）大城市里会有更多的交通工具的使用。</p>
+<p>There are more use of transportation in big citys.</p>
+<p>(7）人们利用动物是合理的。</p>
+<p>Humans use animals is reasonable. [It is reasonable for people to use animals.]</p>
+<p>(8）博物馆雇佣一些导游是有必要的。</p>
+<p>Employing some guides is necessary for museums.[It is necessary for museums to employ some guides.]</p>
+<p>(9）对老年工人的歧视将导致更严重的老龄化问题。</p>
+<p>Discrimination to old workers will cause more serious ageing problems.[Discrimination against old workers will cause more serious ageing problems.]</p>
+<p>(10）禁止在动物园饲养动物是很重要的。</p>
+<p>It is important to ban feeding animals in zoos. [It is important to ban the practice of keeping animals in zoos.] </p>
+<p>(11）参加团体运动可以增强体质。</p>
+<p>Playing a team sport can improve health. [Participating in team sports can enhance physical fitness.] </p>
+<p>(12）孩子们参加团体运动是很重要的。</p>
+<p>It is important for children to play team sport. [It is important for children to get involved in team sports.]</p>
+<p>(13）探索家庭背景在许多国家越来越受欢迎。</p>
+<p>Exploring family backgrounds is more and more popular in many countries. [Exploring family background is becoming increasingly popular in many countries.]</p>
+<p>(14）明天将有一场足球比赛。</p>
+<p>There is a football match tomorrow. [There will be a football match tomorrow.]</p>
+<p>(15）有一封从欧洲来的给你的信。</p>
+<p>There is a letter from Europe for you.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2022/09/26/%E8%8B%B1%E8%AF%AD/20221021%E5%8D%95%E8%AF%8D%E5%90%AC%E5%86%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/%E8%8B%B1%E8%AF%AD/20221021%E5%8D%95%E8%AF%8D%E5%90%AC%E5%86%99/" class="post-title-link" itemprop="url">写作作业20221013</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 12:44:48" itemprop="dateCreated datePublished" datetime="2022-09-26T12:44:48+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-27 15:15:05" itemprop="dateModified" datetime="2022-12-27T15:15:05+08:00">2022-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%8B%B1%E8%AF%AD/" itemprop="url" rel="index"><span itemprop="name">英语</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>111/120</strong></p>
+<p>ability abstract accountant accuracy acid action activity actor adult adventure advertisements advertising advice age agency agreement agriculture aid aim air allergy alley allowence alteration altitude ambition ambulance amount analysy[analysis] analyst anger animal ankle answer Antarctica ape appearance architect architectures area arguments aristotrac[aristocrct] army art article  aspirin assignment atlas audience auditurium[auditorium] author authority average award bachelor background bacteria badge badminton backpack boardness[baldness] band bandage bands bank bandquet[banquet] base basement bases basis bath batteries battery  beach beard beats beauty bed bedroom bed sheet bedsit behavious[behaviors] belt benefit beverage bibliorgraphy bicycle bill biologist bird birth blanket blast block blouse board boarder boat bone bowl bowling branch breakfast brick bridge brochures building bangalow[bungalow] burger barglar[burglar] bus cab cabinet cable cafe cafeteria cage Cambridge cammal[camel] camera</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2022/09/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B/" class="post-title-link" itemprop="url">经典课程收藏</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 12:44:48" itemprop="dateCreated datePublished" datetime="2022-09-26T12:44:48+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-27 15:15:05" itemprop="dateModified" datetime="2022-12-27T15:15:05+08:00">2022-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>计算机专业导论：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av59820680">哈尔滨工业大学-计算机专业导论（国家级精品课）</a><br>数据结构：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av38920216">西北大学 - 数据结构 （国家级精品课）</a><br>数据结构(python):<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av77430140/">av77430140</a><br>计算机组成原理：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av38976462">哈尔滨工业大学 - 计算机组成原理（课堂录播）</a><br>操作系统：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av59006688">浙江大学-操作系统（国家级精品课）</a>、<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av59002531">国防科技大学-操作系统（国家级精品课）</a><br>计算机网络：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av58999844">国防科技大学-计算机网络（国家级精品课）</a><br>计算机体系结构：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av19929862/">av19929862</a><br>软件工程：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av59018769">北京大学-软件工程（国家级精品课）课堂录播–孙艳春老师</a><br>编译原理：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av59119931">国防科技大学-编译原理（国家级精品课）高清流畅</a><br>数据库：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av70279349">哈尔滨工业大学-数据库系统（上+中+下）</a>、<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av59111036">东南大学-数据库原理（国家级精品课）</a><br>计算机原理(国防科大)：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av59398655">国防科技大学-计算机原理（国家级精品课）</a><br>C语言(哈工大)：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av59425334">哈尔滨工业大学-C语言程序设计（国家级精品课）</a><br>C语言(浙大mooc):<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av81779904">浙江大学-C语言程序设计（入门+进阶）</a><br>C语言(有字幕，厦大):<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av62070768">厦门大学-c程序设计基础（有字幕）国家级精品课</a><br>C++(课堂视频):<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av70737494/">av70737494</a><br>C++(学堂在线):<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av83515504/">av83515504</a><br>java(北大):<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av77555386">北京大学-Java程序设计（Java教学）</a><br>离散数学：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av66617565">北京大学-离散数学（国家级精品课）</a>、<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av59326261">吉林大学-离散数学（国家级精品课）</a><br>汇编：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av58986670">华中科技大学-汇编语言程序设计（国家级精品课）</a><br>嵌入式系统:<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av82364806">浙江大学-嵌入式系统（国家级精品课）</a><br>计算机图形学:<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av66548502">清华大学-计算机图形学基础（国家级精品课）</a><br>算法设计与分析:<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av64662783">北京大学-算法设计与分析（国家级精品课）</a><br>数字图像处理:<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av63713661">天津理工大学-数字图像处理（国家级精品课）</a><br>密码学：<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av41333023">武汉大学 - 密码学（国家级）</a>、<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av20135839/">av20135839</a><br>-—————<br>Python系列:<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av77405880/">av77405880</a>(看第一条评论)<br>人工智能和大数据系列:<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av70358352/">av70358352</a>(看第一条评论)<br>电子信息类系列:<img src="https://i0.hdslb.com/bfs/activity-plat/static/20201110/4c8b2dbaded282e67c9a31daa4297c3c/AeQJlYP7e.png" alt="img"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av69569600">清华大学-电子技术基础（数电+模电+实验）</a>(看第一条评论)</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2021/09/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/Part1-cnblog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/Part1-cnblog/" class="post-title-link" itemprop="url">数学基础-Part1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-26 12:44:48" itemprop="dateCreated datePublished" datetime="2021-09-26T12:44:48+08:00">2021-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-27 15:15:05" itemprop="dateModified" datetime="2022-12-27T15:15:05+08:00">2022-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1、数学概况"><a href="#1、数学概况" class="headerlink" title="1、数学概况"></a>1、数学概况</h3><img src="http://qmypxamw0.hb-bkt.clouddn.com/math.png?e=1610859152&token=ZY8CafkCPI_Ty_WzXFBCNUzBmyPBZSknain56icx:5JRk6XLXh-xoNoTrzFFbxaOWwmQ=" alt="概述" />
+
+
+
+<h3 id="2、数据类型-分类"><a href="#2、数据类型-分类" class="headerlink" title="2、数据类型(分类)"></a>2、数据类型(分类)</h3><h4 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h4><ol>
+<li>离散型（N）</li>
+<li>稠密型（Q）</li>
+<li>连续型（R）<blockquote>
+<p>一个实数轴中，取一个无限小的 区间，可能不包含一个数据集的元素。则这个数据集为离散型。若这个小区间无论取多小，一定包含这个数据集的元素，则这个数据集是稠密的。如自然数是离散的，有理数是稠密的，但不是连续的。实数是稠密、连续的。一般情况下直接分为离散型与连续性数据。</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>离散型数据：指一个只取有限个或可数无限个数值的随机变量。</li>
+<li>连续型数据：指一个取任何实数的概率都为0的变量。</li>
+</ul>
+<h4 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h4><ul>
+<li>横截面数据：一个时间点、段内的所有数据。如：上个月的销量。</li>
+<li>时间序列数据：考虑进时间属性的数据。如：股票的市值随时间的变动。去年的销量。</li>
+<li>面板数据：时间属性 + 空间属性的数据。去年一年所有省市的销量数据。</li>
+</ul>
+<h4 id="2-3"><a href="#2-3" class="headerlink" title="2.3"></a>2.3</h4><ul>
+<li>定类尺度（无序）如，国籍：中国<ul>
+<li>不可排序</li>
+<li>不可运算</li>
+</ul>
+</li>
+<li>定序尺度（有序）如，健康状况：良好<ul>
+<li>可排序</li>
+<li>不可运算</li>
+</ul>
+</li>
+<li>【数值】定距尺度（0点有意义）如，出身年份：1981<ul>
+<li>0点有特定意义</li>
+<li>可排序、可运算</li>
+</ul>
+</li>
+<li>【数值】定比尺度（0点表示不存在）如，体重：56公斤<ul>
+<li>可排序，可运算</li>
+<li>0点无特定意义 </li>
+</ul>
+</li>
+</ul>
+<h3 id="3、数据模型简介"><a href="#3、数据模型简介" class="headerlink" title="3、数据模型简介"></a>3、数据模型简介</h3><ul>
+<li><p>数据分析模型</p>
+<ul>
+<li><p>传统统计模型（解决结构问题） -&gt; 回归模型 -&gt; 计量</p>
+</li>
+<li><p>数据挖掘模型（解决预测模型）-&gt; 决策树、神经网络、支持向量机、贝叶斯网络、关联规则…</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-1-回归模型"><a href="#3-1-回归模型" class="headerlink" title="3.1 回归模型"></a>3.1 回归模型</h4><ol>
+<li>简单回归模型。</li>
+</ol>
+<p>$$<br>\Upsilon = \beta_0 + \beta_1X1 + \epsilon<br>$$</p>
+<blockquote>
+<p>陈纪修视频课<br>佳俊平统计学<br>《统计推断》<br>线性代数应该这样学<br>普林斯顿微积分读本</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2021/09/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/Part1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/Part1/" class="post-title-link" itemprop="url">数学基础-Part1 （备份）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-26 12:44:48" itemprop="dateCreated datePublished" datetime="2021-09-26T12:44:48+08:00">2021-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-27 15:15:05" itemprop="dateModified" datetime="2022-12-27T15:15:05+08:00">2022-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1、数学概况"><a href="#1、数学概况" class="headerlink" title="1、数学概况"></a>1、数学概况</h3><img src="E:\01_文件\笔记\数学基础\math.png" alt="概述" style="zoom:100%;" />
+
+
+
+<h3 id="2、数据类型-分类"><a href="#2、数据类型-分类" class="headerlink" title="2、数据类型(分类)"></a>2、数据类型(分类)</h3><h4 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h4><ol>
+<li>离散型（N）</li>
+<li>稠密型（Q）</li>
+<li>连续型（R）<blockquote>
+<p>一个实数轴中，取一个无限小的 区间，可能不包含一个数据集的元素。则这个数据集为离散型。若这个小区间无论取多小，一定包含这个数据集的元素，则这个数据集是稠密的。如自然数是离散的，有理数是稠密的，但不是连续的。实数是稠密、连续的。一般情况下直接分为离散型与连续性数据。</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>离散型数据：指一个只取有限个或可数无限个数值的随机变量。</li>
+<li>连续型数据：指一个取任何实数的概率都为0的变量。</li>
+</ul>
+<h4 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h4><ul>
+<li>横截面数据：一个时间点、段内的所有数据。如：上个月的销量。</li>
+<li>时间序列数据：考虑进时间属性的数据。如：股票的市值随时间的变动。去年的销量。</li>
+<li>面板数据：时间属性 + 空间属性的数据。去年一年所有省市的销量数据。</li>
+</ul>
+<h4 id="2-3"><a href="#2-3" class="headerlink" title="2.3"></a>2.3</h4><ul>
+<li>定类尺度（无序）如，国籍：中国<ul>
+<li>不可排序</li>
+<li>不可运算</li>
+</ul>
+</li>
+<li>定序尺度（有序）如，健康状况：良好<ul>
+<li>可排序</li>
+<li>不可运算</li>
+</ul>
+</li>
+<li>【数值】定距尺度（0点有意义）如，出身年份：1981<ul>
+<li>0点有特定意义</li>
+<li>可排序、可运算</li>
+</ul>
+</li>
+<li>【数值】定比尺度（0点表示不存在）如，体重：56公斤<ul>
+<li>可排序，可运算</li>
+<li>0点无特定意义 </li>
+</ul>
+</li>
+</ul>
+<h3 id="3、数学模型"><a href="#3、数学模型" class="headerlink" title="3、数学模型"></a>3、数学模型</h3><ol>
+<li><p>数学分析模型</p>
+<ul>
+<li>传统统计模型（解决结构问题） -&gt; 回归模型 -&gt; 计量</li>
+<li>数据挖掘模型（解决预测模型）-&gt; 决策树、神经网络、支持向量机、贝叶斯网络、关联规则…</li>
+</ul>
+</li>
+<li><p>传统回归模型</p>
+<ul>
+<li>最简单的回归模型是一元线性回归模型</li>
+</ul>
+<p>$$<br>Y = \beta_0 + \beta_1X + \epsilon<br>$$</p>
+<ul>
+<li>扩展到多个自变量的形式，多元线性回归模型<br>$$<br>Y = \beta_0 + \beta_2X_2 +  \beta_3X_3 + … + \beta_pX_p + \epsilon<br>$$</li>
+<li>非线性形式，广义回归模型<br>$$<br>Y = f(X_1,X_2,…,X_3) + \epsilon<br>$$</li>
+</ul>
+</li>
+<li><p>常用的回归模型</p>
+<ol>
+<li>横截面模型：<strong>多元回归</strong>、<strong>逻辑回归</strong>、托宾回归<em>【0膨胀问题(用户0过多，影响模型训练)】</em>、截尾回归</li>
+<li>时间序列模型：<strong>ARIMA</strong>(一次只能分析一个时间序列)、HARCH（分析时间序列里的异方差）、协整（多个稳定的时间序列）</li>
+<li>面板数据模型：固定效应/随机效应、空间计量模型</li>
+<li>结构方程模型：（多个多元回归拼成方程组，多个有关系的Y拼成方程组）</li>
+<li>向量自回归模型（VAR）：（Y也对X有影响）</li>
+</ol>
+</li>
+</ol>
+<p>​4. 数据挖掘模型<br>    1. 支持向量机：</p>
+<blockquote>
+<p>陈纪修视频课<br>佳俊平统计学<br>《统计推断》<br>线性代数应该这样学<br>普林斯顿微积分读本</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.yanggyc.work/2021/09/26/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Guangyu Yang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yanggyc.Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/26/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">Mysql数据库测试框架整理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-26 12:44:48" itemprop="dateCreated datePublished" datetime="2021-09-26T12:44:48+08:00">2021-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-27 15:15:05" itemprop="dateModified" datetime="2022-12-27T15:15:05+08:00">2022-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="测试案例可能失败的几种方式"><a href="#测试案例可能失败的几种方式" class="headerlink" title="测试案例可能失败的几种方式"></a>测试案例可能失败的几种方式</h3><ul>
+<li>SQL执行结果的result code与期望的不一致。</li>
+<li>测试文件中预期的错误没有出现。</li>
+<li>产生了错误的输出。与../r/目录下的预期结果进行对比，如果期望的结果与真实的结果不同，则将真实的测试结果写到mysql-test/var/log目录下，以testname.reject命名。</li>
+<li>在测试过程中，MySQL服务器意外宕机，测试用例将失败。在这种情况下，mysqltest测试客户端通常也会报告由于连接丢失而导致的失败。</li>
+<li>在案例测试期间，错误日志和警告没有被过滤，则会导致案例测试失败。</li>
+</ul>
+<h3 id="mysql测试框架的组成部分"><a href="#mysql测试框架的组成部分" class="headerlink" title="mysql测试框架的组成部分"></a>mysql测试框架的组成部分</h3><h4 id="测试框架程序"><a href="#测试框架程序" class="headerlink" title="测试框架程序"></a>测试框架程序</h4><ul>
+<li> Perl脚本mysql-test-run.pl是运行测试的主要程序，它调用MySQLtest来运行各个测试用例。</li>
+<li> mysqltest运行测试用例。</li>
+<li> mysql_client_test程序用于测试MySQL客户端API的一些方面，这些方面不能使用mysqltest及其测试语言进行测试。</li>
+<li> Perl脚本mysql-stress-test.pl用于mysql服务器的压力测试。</li>
+<li> 提供了一个单元测试工具，以便为存储引擎和插件创建单独的单元测试程序。</li>
+</ul>
+<h4 id="测试套件程序的存放位置"><a href="#测试套件程序的存放位置" class="headerlink" title="测试套件程序的存放位置"></a>测试套件程序的存放位置</h4><ul>
+<li>对于源发行版，mysqltest在客户端目录中。对于二进制发行版，它位于MySQL bin目录中。</li>
+<li>对于源发行版，mysql_client_test位于tests目录中。对于二进制发行版，它位于MySQL bin目录中。</li>
+<li>其他程序位于mysql-test目录中。对于发行版，可以在根目录下找到mysql-test。对于二进制发行版，mysql-test的位置取决于发行版格式使用的布局。</li>
+</ul>
+<h4 id="测试框架目录和文件"><a href="#测试框架目录和文件" class="headerlink" title="测试框架目录和文件"></a>测试框架目录和文件</h4><p>测试套件位于mysql-test目录中，其中包含以下组件:</p>
+<ul>
+<li><p>用于测试的程序mysql-test-run.pl和mysql-stress-test.pl。   </p>
+</li>
+<li><p>t目录包含测试用例输入文件。测试用例文件还可能有与之关联的其他文件。</p>
+<ul>
+<li>命名为testname.test的测试案例文件，是一个名为testname的用例文件。例如subtest.test是名为subtest的测试用例文件。</li>
+<li>名为test_name-master.opt提供了与指定测试用例相关联的选项。如果选项与当前运行的服务器所需的选项不同，脚本mysql-test-run.pl将用文件中给出的配置选项重启服务器- 请注意-master.opt文件用于测试的主服务器，即使不涉及主从复制。</li>
+<li>文件test_name-slave.opt提供从选项。</li>
+<li>在服务器初始化期间需要传递的服务器选项可以在test_name-master.pl和test_name-slave.pl中传递。必须将每个引导变量作为-bootstrap选项的值传递，以便mysql-test.pl能够识别在服务器初始化期间应该使用该变量，删除现有的数据目录，并使用提供的选项初始化一个新的数据目录。mysql-test-run.pl还将在之后启动服务器，并指定引导选项和其他选项。</li>
+<li>命名格式为test_name-client.opt的文件提供了mysqltest客户端选项。</li>
+<li>命名格式为test_name.cnf的文件包含用于此测试的配置文件的附加项。<ul>
+<li>在测试运行期间。每个服务器都使用不同的default -group-suffix值启动，该后缀值可以与组名称一起使用，以指定服务器的特定选项。例如[mysqld.1]以后缀.1来指定mysql服务器的特殊选项。</li>
+<li>[mysqltest]部分用于为mysqltest客户端指定选项。</li>
+<li>[ENV]部分用于为测试用例指定环境变量。</li>
+<li>要包含另一个.cnf文件中提到的选项，使用!include path_to_cnf_file。包含的.cnf的路径应该是当前位置或mysql-test目录的绝对路径或相对路径。<br>如下是一个.cnf的实例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">!include include/default_my.cnf</span><br><span class="line"></span><br><span class="line">[mysqld.1]</span><br><span class="line">Options for server mysqld.1</span><br><span class="line"></span><br><span class="line">[mysqld.2]</span><br><span class="line">Options for server mysqld.2</span><br><span class="line"></span><br><span class="line">[mysqltest]</span><br><span class="line">ps-protocol</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">[ENV]</span><br><span class="line">SERVER_MYPORT_1= @mysqld.1.port</span><br><span class="line">SERVER_MYPORT_2= @mysqld.2.port</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>命名格式为suite.opt的文件为其所属套件中的所有测试提供服务器选项。<br>如果一个测试运行由多个服务器启动，那么所有服务器都将使用suite.opt中指定的选项。还可以在suite.opt文件中传递服务器初始化期间所需要的服务器选项。<br>suite.opt文件中提及到的选项将会被test_name-master.opt或test_name-slave.opt文件中的选项覆盖。</li>
+<li>命名格式为test_name-master.sh的文件名是一个shell脚本，它将在服务器启动之前为命名的测试用例执行。还可能有一个test_name-slave.sh,它在从服务器启动之前执行。   这些文件不能再windows上工作，因此可能在将来被一种更有可移植性的机制所替代。</li>
+<li>disabled.def文件包含关于延迟/禁用测试的信息。当一个测试由于服务器中的一个错误而失败，并且您希望它被 mysql-test-run.pl忽略时，在这个文件中列出这些测试案例。<br>disabled.def文件中的行格式如下所示，其中字段由一个或多个空格分隔。  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">suite_name.test_name : BUG#nnnnn YYYY-MM-DD disabler comment</span><br></pre></td></tr></table></figure>
+  例如：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpl.rpl_row_blob_innodb : BUG#18980 2006-04-10 kent Test fails randomly</span><br></pre></td></tr></table></figure>
+suite_name:测试套件名。test_name:测试案例名。BUG#nnnnn:指示失败的与测试相关的错误(因此需要禁用它)。disable:是禁用测试的人的名称。comment通常提供禁用测试的原因。<br>冒号后面的文本不是这个文件的强制语法的一部分；mysql-test-run.pl实际上并不关心这里写的是什么。这只是一个推荐的标准。</li>
+</ul>
+<p>  在测试名称后面和冒号前面添加一个额外的元素，您可以添加一个@platform,以便仅在特定的平台上禁用测试。基本的操作系统名称在Perl中根据$^O，或支持”windows”。另外，@!platform将禁用除指定平台之外的所有平台上的测试。</p>
+<p>  可以在文件中以”#”字符开头编写注释行。</p>
+</li>
+<li><p>r目录包含测试用例结果文件</p>
+<ul>
+<li>一个命名格式为test_name.result是相应命名测试案例的预期结果。一个命名为r/test_name.result的文件是与测试用例文件t/test_name.test中的输入相对应的输出。</li>
+<li>命名格式为test_name.reject的文件包含的是由于测试结果与预期不匹配的结果输出。<br>对于成功的测试案例，.result文件表示预期结果和实际结果。对于失败的测试案例，.result文件表示预期的结果，.reject文件表示实际的结果。</li>
+</ul>
+<p>  如果由于测试失败而创建.reject文件，那么在下一次测试成功时，mysql-test-run.pl将删除该文件。</p>
+<p>  当–check-testcases选项被启用时，一个没有对应的.result文件的测试用例被MTR标记为failed。具体看mysql-test-run.pl。</p>
+</li>
+<li><p>  include目录包含源命令的测试用例文件包含的文件。这些文件将不同复杂性的操作封装到一个文件中，这样就可以在单个步骤中执行这些操作。</p>
+</li>
+<li><p>lib目录包含mysql-test-run.pl使用的库文件和数据库初始化SQL代码。</p>
+</li>
+<li><p>std_data目录包含一些测试使用的数据文件。</p>
+</li>
+<li><p>var目录在测试运行期间的各种文件：测试期间启动的服务器日志、临时文件、跟踪文件、Unix套接字文件，等等。此目录不能由同步测试运行共享。</p>
+</li>
+<li><p>suite目录包含一组包含命名测试套件的子目录，每个子目录表示具有相同名称的测试套件。<br>一个测试套件目录包含以下组件：</p>
+<ul>
+<li>t目录包含测试案例。</li>
+<li>r目录包含测试文件的结果文件。</li>
+<li>include目录包含属于该套件的测试用例包含的文件。</li>
+<li>文件名combinations为每个测试运行提供选项部分。</li>
+<li>文件my.cnf包含配置文件的附加条目，该配置文件用于它所属套件中的所有测试。<br>套件特定的my.cnf文件被test_name.cnf文件覆盖。</li>
+</ul>
+</li>
+<li><p>collections目录包含了在MySQL集成和发布测试期间运行的测试的集合。他们在此上下文中不是直接有用的，但是需要成为源存储库的一部分，并包含在其中以供参考。</p>
+</li>
+</ul>
+<p>单元测试相关的文件位于unittest目录中，特定于存储引擎和插件的其他文件可能位于存储或插件目录的子目录下。</p>
+<h4 id="测试执行和评估"><a href="#测试执行和评估" class="headerlink" title="测试执行和评估"></a>测试执行和评估</h4>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guangyu Yang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
 </body>
-
 </html>
